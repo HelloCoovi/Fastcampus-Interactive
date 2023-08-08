@@ -7,6 +7,11 @@ button {
 
 header {
   display: flex;
+  padding: 0 80px;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgb(0 0 0 / 8%) 0 1px 0;
 }
 
 #logo {
@@ -24,6 +29,13 @@ header {
   box-sizing: border-box;
   min-width: 330px;
   box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(10 0 0 / 5%);
+  cursor: pointer;
+}
+#little-search * {
+  cursor: pointer;
+}
+#little-search:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
 }
 .little-search_button {
   display: block;
@@ -56,4 +68,43 @@ header {
 }
 #magnifying-glass-icon {
   width: 12px;
+}
+
+/*  */
+
+#header-right-section {
+  display: flex;
+  gap: 8px;
+}
+
+#do-airbnb {
+  padding: 12px;
+  font-size: 14px;
+  color: #222222;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 22px;
+}
+#do-airbnb:hover {
+  background-color: #f7f7f7;
+}
+
+/*  */
+#profile-section {
+  display: flex;
+  gap: 12px;
+  padding: 5px 5px 5px 12px;
+  border: 1px solid #dddddd;
+  border-radius: 21px;
+
+  cursor: pointer;
+}
+#profile-section img:nth-child(1) {
+  width: 16px;
+}
+#profile-section img:nth-child(2) {
+  width: 30px;
+}
+#profile-section:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
 }
