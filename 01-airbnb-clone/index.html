@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
+    <!-- header 구현 -->
     <header>
       <img id="logo" src="./imgs/comp_0685990 (1).png" alt="fast campus logo" />
       <div id="little-search">
@@ -31,8 +32,42 @@
         </div>
       </div>
     </header>
+    <div id="category-bar">
+      <button class="category-button" id="active-category-button">
+        <img
+          class="inactive-img"
+          src="./imgs/airplane.svg"
+          alt="airplane icon"
+        />
+        <img
+          class="active-img"
+          src="./imgs/airplane_black.svg"
+          alt="airplane icon"
+        />
+        <div>한옥</div>
+      </button>
+      <button class="category-button">
+        <img
+          class="inactive-img"
+          src="./imgs/armchair.svg"
+          alt="armchair icon"
+        />
+        <img
+          class="active-img"
+          src="./imgs/armchair_black.svg"
+          alt="armchair icon"
+        />
+        <div>민박</div>
+      </button>
+    </div>
   </body>
   <script>
-    console.log("끄아앙아아아ㅏㄱ");
+    document.querySelectorAll(".category-button").forEach((button) => {
+      button.addEventListener("click", (event) => {
+        document.querySelector("#active-category-button").removeAttribute("id");
+
+        button.setAttribute("id", "active-category-button");
+      });
+    });
   </script>
 </html>
