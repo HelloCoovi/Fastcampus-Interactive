@@ -209,3 +209,32 @@ main {
 .description-section_title {
   font-weight: 600;
 }
+#floating-map-button {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 19px;
+  bottom: 125px;
+  left: 50%;
+  background-color: #222222;
+  border-radius: 24px;
+  transform: translateX(-50%);
+  color: #ffffff;
+  font-weight: 600;
+  gap: 8px;
+  cursor: pointer;
+}
+#floating-map-button:hover {
+  box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent,
+    0 6px 16px rgba(0, 0, 0, 0.12) !important;
+  /* 
+  🎯 transform이 이미 적용된 상태(translateX(-50%))이므로
+  transform이 적용된 요소에 transform을 적용할 때는 동일한 transform을
+  적용한 다음 추가적인 속성을 넣어야한다.
+  */
+  transform: translateX(-50%) scale(1.04);
+}
+#floating-map-button img {
+  width: 16px;
+}
