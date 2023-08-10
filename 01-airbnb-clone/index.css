@@ -154,3 +154,58 @@ header {
 #active-category-button .inactive-img {
   display: none;
 }
+
+/*  */
+main {
+  display: flex;
+  justify-content: center;
+  padding: 24px 80px;
+}
+
+/* 숙소리스트 아이템 */
+#place-item-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 308px);
+  justify-items: center;
+  align-items: center;
+  box-sizing: border-box;
+  gap: 40px 24px;
+}
+.place-image-wrapper {
+  position: relative;
+  width: 308px;
+  height: 293px;
+  border-radius: 23px;
+  overflow: hidden;
+}
+.place-image-wrapper img {
+  width: 500px;
+  height: 500px;
+}
+/*
+ 🎯CSS 우선 순위가 위 .place-image-wrapper img 보다 낮아서 속성이 충돌,
+ .place-image-wrapper로 선택자를 추가해서 우선순위를 높여 해결
+*/
+.place-image-wrapper .heart-icon {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+/* 🎯 :active는 CSS에서 제공하는 의사 클래스이며 "마우스로 누르는 동안" 활성화  */
+.heart-icon:active {
+  transform: scale(0.5);
+  transition: transform 0.25s ease;
+}
+.description-section {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 15px;
+  color: rgb(34, 34, 34);
+}
+.description-section_title {
+  font-weight: 600;
+}
