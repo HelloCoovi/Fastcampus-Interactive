@@ -7,3 +7,24 @@ body {
   overflow: hidden;
   background-color: #24145e;
 }
+
+@keyframes rotation {
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+#planet_2 {
+  animation-name: rotation;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+#planet_1 {
+  animation-name: rotation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
