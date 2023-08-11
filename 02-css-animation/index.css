@@ -1,0 +1,99 @@
+/* 애니메이션 선언 */
+/* 
+from과 to 사이 %로 애니메이션 중간에 설정 가능
+from == 0%
+to == 100%
+*/
+@keyframes moveToDown {
+  from {
+    color: red;
+  }
+  50% {
+    color: blue;
+  }
+  to {
+    color: yellow;
+    transform: translateY(300px);
+  }
+}
+
+/*
+모든 버튼에 기본 애니메이션 적용 
+- moveToDown을 2초 동안 적용
+  ->(animation-name과 animation-duration이 축약된 상태)
+- 애니메이션 지연시간 1초
+- 폰트색 검정
+*/
+button {
+  animation: moveToDown 2s;
+  animation-delay: 1s;
+  color: black;
+}
+
+#button1 {
+  /* 애니메이션 시작 지점 */
+  animation-direction: reverse;
+}
+/* direction이 alternate이면서 애니메이션 횟수가 2회 이상이면 자연스럽게 돌아온다.*/
+#button2 {
+  animation-direction: alternate;
+  /* 애니메이션 반복 횟수(infinite 설정시 무한 반복) */
+  animation-iteration-count: 2;
+}
+#button3 {
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+}
+/* 애니메이션의 속도 지정(시간이 짧을수록 속도가 빨라짐) */
+#button4 {
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+#button5 {
+  /* 애니메이션 재생(paused는 멈춤, running은 재생) */
+  animation-play-state: paused;
+  /* animation-play-state: running; */
+}
+/* animation-fill-mode는 애니메이션 시작 전, 후의 상태를 지정 */
+#button6 {
+  /* 애니메이션이 시작하기전에도 애니메이션의 상태를 반영 */
+  /* from { color: red; } */
+  animation-fill-mode: backwards;
+}
+#button7 {
+  /* 애니메이션이 끝난후 애니메이션 상태를 지우지않고 그대로 둠 */
+  /* to { color: yellow; transform: translateY(300px); } */
+  animation-fill-mode: forwards;
+}
+#button8 {
+  /* backwards, forwards 둘 다 적용 */
+  animation-fill-mode: both;
+}
+
+/* transform */
+.transform {
+  /* 애니메이션 기능은 비활성화 */
+  animation: none;
+}
+
+#button9 {
+  /* X좌표로 이동 */
+  transform: translateX(-5px);
+}
+#button10 {
+  /* Y좌표로 이동 */
+  transform: translateY(100px);
+}
+#button11 {
+  /* 크기 변경 */
+  /* 1보다 작은 숫자를 입력하면 작아진다. */
+  transform: scale(1.5);
+}
+#button12 {
+  /* 회전 */
+  transform: rotate(180deg);
+}
+#button13 {
+  /* 기울임(x방향 기울기, y방향 기울기) */
+  transform: skew(15deg, -15deg);
+}
