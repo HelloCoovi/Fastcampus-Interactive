@@ -68,6 +68,12 @@ body {
   }
 }
 
+@keyframes soaking {
+  to {
+    transform: translateY(-250px) scale(0);
+  }
+}
+
 /* 회전하는 별 */
 #planet_2 {
   animation-name: rotation;
@@ -128,4 +134,10 @@ body {
 #alien_hand-L {
   animation: shakingUpAndDown 1s infinite;
   animation-timing-function: cubic-bezier(0.35, 0.28, 0.82, 0.87);
+}
+
+#number-0-soaking {
+  animation: soaking 2s;
+  transform-box: fill-box;
+  transform-origin: center;
 }

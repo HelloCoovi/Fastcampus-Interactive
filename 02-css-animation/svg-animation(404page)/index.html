@@ -288,8 +288,21 @@
     </svg>
   </body>
   <script>
-    document.getElementById("number-0").addEventListener("animationend", () => {
-      console.log("number-0 애니메이션 종료!");
-    });
+    // setZeroDisappear는 number-0의 애니메이션을 지우고
+    // number-0의 id를 number-0-soaking으로 변경함
+    // 자신을 호출하는 상황은 흔하게 있으며 같은 애니메이션이 다시 동작하지 않도록 예방하는 역할을 함
+    // 재귀적으로 표현하지 않으면 코드가 몹시 늘어짐
+    const setZeroDisappear = () => {
+      document
+        .getElementById("number-0")
+        .removeEventListener("animationend", setZeroDisappear);
+      document
+        .getElementById("number-0")
+        .setAttribute("id", "number-0-soaking");
+    };
+    // 0이 올라가는 애니메이션이 끝나면 setZeroDisappear 실행
+    document
+      .getElementById("number-0")
+      .addEventListener("animationend", setZeroDisappear);
   </script>
 </html>
