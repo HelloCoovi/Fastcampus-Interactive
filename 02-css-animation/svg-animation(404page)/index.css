@@ -41,6 +41,15 @@ body {
   }
 }
 
+@keyframes appearFromBottom {
+  from {
+    transform: translateY(1000px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 /* 회전하는 별 */
 #planet_2 {
   animation-name: rotation;
@@ -89,4 +98,9 @@ body {
   animation: expandHorizontal 3.5s;
   transform-box: fill-box;
   transform-origin: center;
+}
+
+/* 404의 0이 아래에서 위로 올라오는 애니메이션 적용 */
+#number-0 {
+  animation: appearFromBottom 3s;
 }
