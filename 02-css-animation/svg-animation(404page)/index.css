@@ -32,6 +32,7 @@ body {
   }
 }
 
+/* 회전하는 별 */
 #planet_2 {
   animation-name: rotation;
   animation-duration: 4s;
@@ -47,8 +48,29 @@ body {
   transform-origin: center;
 }
 
+/* 반짝이는 별 */
 #star_6 {
   animation: shrinkAndGrow 4s infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+#star_3 {
+  animation: shrinkAndGrow 2s infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+#star_5 {
+  animation: shrinkAndGrow 6s infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+#star_7 {
+  animation: shrinkAndGrow 9s infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+#star_8 {
+  animation: shrinkAndGrow 11s infinite;
   transform-box: fill-box;
   transform-origin: center;
 }
