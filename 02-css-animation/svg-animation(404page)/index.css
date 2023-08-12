@@ -32,6 +32,15 @@ body {
   }
 }
 
+@keyframes expandHorizontal {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 /* 회전하는 별 */
 #planet_2 {
   animation-name: rotation;
@@ -71,6 +80,13 @@ body {
 }
 #star_8 {
   animation: shrinkAndGrow 11s infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* UFO의 빔이 펼쳐지는 애니메이션 */
+#UFO-beam {
+  animation: expandHorizontal 3.5s;
   transform-box: fill-box;
   transform-origin: center;
 }
