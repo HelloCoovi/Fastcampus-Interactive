@@ -91,6 +91,8 @@ body {
 #planet_1 {
   animation-name: rotation;
   animation-duration: 2s;
+  /* 사전에 정의된 timing-function이며 linear는 일정한 속도로 움직이는것을 의미 */
+  animation-timing-function: linear;
   animation-iteration-count: infinite;
   transform-box: fill-box;
   transform-origin: center;
@@ -133,6 +135,8 @@ body {
 /* 404의 0이 아래에서 위로 올라오는 애니메이션 적용 */
 #number-0 {
   animation: appearFromBottom 3s;
+  /* 사전에 정의된 cubic-bezier이 아닌 임의의 cubic-bezier를 넣을수 있음 */
+  animation-timing-function: cubic-bezier(0.79, 1.31, 0.82, -0.36);
 }
 
 /* 외계인이 손을 흔드는 애니메이션 */
