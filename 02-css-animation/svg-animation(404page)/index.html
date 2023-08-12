@@ -288,24 +288,50 @@
     </svg>
   </body>
   <script>
-    // setZeroDisappear는 number-0의 애니메이션을 지우고
+    // setZeroAndBeamAppear는 number-0-soaking의 애니메이션을 지우고(setZeroAndBeamAppear 자신)
+    // number-0-soaking의 id를 number-0으로 변경함
+    const setZeroAndBeamAppear = () => {
+      document
+        .getElementById("number-0-soaking")
+        .removeEventListener("animationend", setZeroAndBeamAppear);
+
+      document
+        .getElementById("number-0-soaking")
+        .setAttribute("id", "number-0");
+      document
+        .getElementById("UFO-beam-disappearing")
+        .setAttribute("id", "UFO-beam");
+
+      // 반복을 위해서 이벤트 붙여주기
+      document
+        .getElementById("number-0")
+        .addEventListener("animationend", setZeroAndBeamDisappear);
+    };
+
+    // setZeroAndBeamDisappear는 number-0의 애니메이션을 지우고(setZeroAndBeamDisappear 자신)
     // number-0의 id를 number-0-soaking으로 변경함
     // 자신을 호출하는 상황은 흔하게 있으며 같은 애니메이션이 다시 동작하지 않도록 예방하는 역할을 함
     // 재귀적으로 표현하지 않으면 코드가 몹시 늘어짐
-    const setZeroDisappear = () => {
+    const setZeroAndBeamDisappear = () => {
       document
         .getElementById("number-0")
-        .removeEventListener("animationend", setZeroDisappear);
+        .removeEventListener("animationend", setZeroAndBeamDisappear);
+
       document
         .getElementById("number-0")
         .setAttribute("id", "number-0-soaking");
       document
         .getElementById("UFO-beam")
         .setAttribute("id", "UFO-beam-disappearing");
+
+      // 반복을 위해서 이벤트를 붙여주기(setZeroAndBeamAppear)
+      document
+        .getElementById("number-0-soaking")
+        .addEventListener("animationend", setZeroAndBeamAppear);
     };
-    // 0이 올라가는 애니메이션이 끝나면 setZeroDisappear 실행
+    // 0이 올라가는 애니메이션이 끝나면 setZeroAndBeamDisappear 실행
     document
       .getElementById("number-0")
-      .addEventListener("animationend", setZeroDisappear);
+      .addEventListener("animationend", setZeroAndBeamDisappear);
   </script>
 </html>
