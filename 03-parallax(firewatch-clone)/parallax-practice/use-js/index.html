@@ -12,8 +12,9 @@
   </body>
   <script>
     window.addEventListener("scroll", () => {
-      console.log("스크롤 이벤트 작동");
-      console.log(window.scrollY);
+      document.getElementById("div-1").style.transform = `translateY(${
+        window.scrollY * 1.5
+      }px)`;
     });
   </script>
 </html>
