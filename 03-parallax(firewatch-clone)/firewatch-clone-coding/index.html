@@ -1674,15 +1674,24 @@
     </div>
   </body>
   <script>
+    const sun = document.getElementById("sun");
+
     const grayClouds = document.getElementById("gray-clouds");
     const whiteClouds = document.getElementById("white-clouds");
-    const sun = document.getElementById("sun");
+
+    const bird1 = document.getElementById("bird1");
+    const bird2 = document.getElementById("bird2");
+    const bird3 = document.getElementById("bird3");
 
     window.addEventListener("scroll", () => {
       sun.style.transform = `translateY(${window.scrollY * 1.05}px)`;
 
       grayClouds.style.transform = `translateX(${window.scrollY * 0.125}px)`;
       whiteClouds.style.transform = `translateX(${window.scrollY * -0.125}px)`;
+
+      bird1.style.transform = `translateX(${window.scrollY}px)`;
+      bird2.style.transform = `translateX(-${window.scrollY * 3.5}px)`;
+      bird3.style.transform = `translateX(-${window.scrollY * 0.5}px)`;
     });
 
     document
