@@ -6,5 +6,25 @@
     <link rel="stylesheet" href="./index.css" />
     <title>FireWatch clone coding - Parallax Scrolling</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <a class="button-in-header">THE MOUNTAIN</a>
+      <div id="right-buttons">
+        <a id="active-menu" class="button-in-header">MOUNTAIN</a>
+        <a class="button-in-header">AMAZING BLOG</a>
+        <a class="button-in-header">AMAZING NEWS</a>
+      </div>
+    </header>
+  </body>
+  <script>
+    document
+      .querySelectorAll("#right-buttons .button-in-header")
+      .forEach((element) => {
+        element.addEventListener("click", (event) => {
+          document.getElementById("active-menu").removeAttribute("id");
+
+          element.setAttribute("id", "active-menu");
+        });
+      });
+  </script>
 </html>
