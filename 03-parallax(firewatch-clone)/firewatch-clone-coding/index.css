@@ -8,6 +8,11 @@ header {
   background-color: #04120c;
   color: #b8e1ee;
 }
+
+body {
+  height: 200vh;
+}
+
 .button-in-header {
   padding: 10px;
   font-weight: 700;
@@ -15,15 +20,19 @@ header {
   height: 34px;
   box-sizing: border-box;
 }
-
 .button-in-header:hover {
   background-color: #127374;
 }
-
 #right-buttons {
   display: flex;
 }
-
 #active-menu {
   background-color: #013a3b;
+}
+
+#image-wrapper {
+  overflow: hidden;
+}
+#main-image {
+  min-width: 1000px;
 }

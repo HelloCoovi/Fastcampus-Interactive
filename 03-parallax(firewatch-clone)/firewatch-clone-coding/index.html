@@ -1674,6 +1674,11 @@
     </div>
   </body>
   <script>
+    const sun = document.getElementById("sun");
+    window.addEventListener("scroll", () => {
+      sun.style.transform = `translateY(${window.scrollY * 1.05}px)`;
+    });
+
     document
       .querySelectorAll("#right-buttons .button-in-header")
       .forEach((element) => {
