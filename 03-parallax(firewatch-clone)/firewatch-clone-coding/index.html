@@ -1737,8 +1737,14 @@
 
     const link = document.querySelector('a[href="#document-title"]');
 
-    link.addEventListener("click", () => {
-      console.log("클릭됨!");
+    link.addEventListener("click", (event) => {
+      // 해당 이벤트의 동작 차단하는 함수 preventDefault()
+      event.preventDefault();
+      // 지정한 요소로 스크롤을 이동시키는 scrollIntoView()와
+      // behavior 기본 auto에서 smooth로 바꾸어서 부드럽게 이동
+      document.querySelector("#document-title").scrollIntoView({
+        behavior: "smooth",
+      });
     });
   </script>
 </html>
