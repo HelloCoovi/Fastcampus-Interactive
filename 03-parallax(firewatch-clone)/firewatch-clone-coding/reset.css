@@ -127,3 +127,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+/* 개인적 reset.css 추가 */
+a {
+  color: unset;
+  text-decoration: unset;
+}
