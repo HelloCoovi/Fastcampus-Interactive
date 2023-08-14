@@ -1734,5 +1734,11 @@
           element.setAttribute("id", "active-menu");
         });
       });
+
+    const link = document.querySelector('a[href="#document-title"]');
+
+    link.addEventListener("click", () => {
+      console.log("클릭됨!");
+    });
   </script>
 </html>
