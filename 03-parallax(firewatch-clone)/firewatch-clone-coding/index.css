@@ -37,3 +37,39 @@ body {
 #main-image {
   min-width: 1000px;
 }
+
+#document-title {
+  margin-bottom: 40px;
+  color: #b8e1ee;
+  font-size: 170%;
+  font-weight: 300;
+  letter-spacing: 10px;
+}
+#main-content-wrapper {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#mountain-tag-wrapper {
+  display: flex;
+  font-size: 18px;
+  font-weight: 700;
+  gap: 50px;
+}
+
+.mountain-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.mountain-content-list {
+  width: 325px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #b8e1ee;
+  color: #04120c;
+}
