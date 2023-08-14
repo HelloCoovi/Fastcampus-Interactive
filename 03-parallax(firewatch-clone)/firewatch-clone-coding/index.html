@@ -1674,9 +1674,15 @@
     </div>
   </body>
   <script>
+    const grayClouds = document.getElementById("gray-clouds");
+    const whiteClouds = document.getElementById("white-clouds");
     const sun = document.getElementById("sun");
+
     window.addEventListener("scroll", () => {
       sun.style.transform = `translateY(${window.scrollY * 1.05}px)`;
+
+      grayClouds.style.transform = `translateX(${window.scrollY * 0.125}px)`;
+      whiteClouds.style.transform = `translateX(${window.scrollY * -0.125}px)`;
     });
 
     document
