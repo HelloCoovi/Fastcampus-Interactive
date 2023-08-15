@@ -1754,8 +1754,27 @@
     });
 
     window.addEventListener("resize", () => {
-      console.log("화면사이즈 변경!!!!!");
       clientWidth = document.documentElement.clientWidth;
+
+      if (clientWidth < 800) {
+        sun.style.transform = `translateY(0px)`;
+
+        grayClouds.style.transform = `translateX(0px)`;
+        whiteClouds.style.transform = `translateX(0px)`;
+
+        bird1.style.transform = `translateX(0px)`;
+        bird2.style.transform = `translateX(0px)`;
+        bird3.style.transform = `translateX(0px)`;
+
+        mountain0.style.transform = `translateY(0px)`;
+        mountain1.style.transform = `translateY(0px)`;
+        mountain2.style.transform = `translateY(0px)`;
+        mountain3.style.transform = `translateY(0px)`;
+        mountain4.style.transform = `translateY(0px)`;
+        mountain5.style.transform = `translateY(0px)`;
+        mountain6.style.transform = `translateY(0px)`;
+        mountain7.style.transform = `translateY(0px)`;
+      }
     });
   </script>
 </html>
