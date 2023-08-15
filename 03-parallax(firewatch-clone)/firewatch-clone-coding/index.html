@@ -1752,5 +1752,10 @@
         behavior: "smooth",
       });
     });
+
+    window.addEventListener("resize", () => {
+      console.log("화면사이즈 변경!!!!!");
+      clientWidth = document.documentElement.clientWidth;
+    });
   </script>
 </html>
