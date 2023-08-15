@@ -24,6 +24,17 @@ body {
 .button-in-header:hover {
   background-color: #127374;
 }
+.long-text {
+  display: none;
+}
+@media (min-width: 880px) {
+  .long-text {
+    display: inline;
+  }
+  .short-text {
+    display: none;
+  }
+}
 #right-buttons {
   display: flex;
 }
