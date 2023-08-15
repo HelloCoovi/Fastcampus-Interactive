@@ -64,9 +64,17 @@ body {
 }
 #mountain-tag-wrapper {
   display: flex;
+  flex-direction: column;
   font-size: 18px;
   font-weight: 700;
   gap: 50px;
+}
+
+/* min-width -> 최소 너비 -> 너비가 이 값 이상일때 */
+@media (min-width: 880px) {
+  #mountain-tag-wrapper {
+    flex-direction: row;
+  }
 }
 
 .mountain-content-wrapper {
