@@ -1,0 +1,37 @@
+@import "reset.css";
+
+body {
+  background-color: #111111;
+}
+#main-img-wrapper {
+  padding-top: 139px;
+  text-align: center;
+}
+
+#intro-main {
+  margin: 54px auto 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 300px;
+  color: white;
+  font-size: 40px;
+  font-weight: 500;
+}
+#intro-main p {
+  text-align: center;
+}
+
+#join-us-text {
+  margin-top: 73px;
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+#down-arrow-icon {
+  width: 33px;
+}
