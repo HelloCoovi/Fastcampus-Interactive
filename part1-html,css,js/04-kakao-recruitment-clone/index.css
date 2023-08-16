@@ -47,3 +47,13 @@ body {
   width: 33px;
   animation: upAndDown 1s infinite;
 }
+
+#list-item-wrapper {
+  margin: 0 auto;
+  width: 383px;
+}
+.list-item {
+  display: inline;
+  font-size: 48px;
+  font-weight: 600;
+}
