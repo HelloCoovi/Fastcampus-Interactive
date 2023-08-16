@@ -32,6 +32,18 @@ body {
   opacity: 0.6;
 }
 
+@keyframes upAndDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 #down-arrow-icon {
   width: 33px;
+  animation: upAndDown 1s infinite;
 }
