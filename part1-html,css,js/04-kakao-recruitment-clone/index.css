@@ -51,9 +51,16 @@ body {
 #list-item-wrapper {
   margin: 0 auto;
   width: 383px;
+
+  /* scrollY값을 위한 임시 margin */
+  margin-bottom: 500px;
 }
 .list-item {
   display: inline;
   font-size: 48px;
   font-weight: 600;
+}
+
+.list-item#on {
+  color: white;
 }

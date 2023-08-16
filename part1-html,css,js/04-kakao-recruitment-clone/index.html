@@ -55,4 +55,19 @@
       <li class="list-item">마이너스통장대출</li>
     </ul>
   </body>
+  <script>
+    const listStyleChangeStartY = 373;
+    const listStyleChangeEndY = 1585;
+
+    const listItems = document.querySelectorAll(".list-item");
+
+    window.addEventListener("scroll", () => {
+      if (
+        window.scrollY > listStyleChangeStartY &&
+        window.scrollY < listStyleChangeEndY
+      ) {
+        listItems[0].id = "on";
+      }
+    });
+  </script>
 </html>
