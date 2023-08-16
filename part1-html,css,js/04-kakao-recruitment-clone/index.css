@@ -9,10 +9,9 @@ body {
 }
 
 #intro-main {
-  margin: 54px auto 0;
+  margin: 54px auto 140px;
 
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 20px;
@@ -61,6 +60,19 @@ body {
   font-weight: 600;
 }
 
+.list-item::before {
+  display: inline-block;
+  background-image: url("./icons/dark_house.png");
+  background-size: 51px 53px;
+  content: "";
+  width: 51px;
+  height: 53px;
+}
+
 .list-item#on {
   color: white;
+}
+
+.list-item#on::before {
+  background-image: url("./icons/light_house.png");
 }
