@@ -8,11 +8,7 @@
   </head>
   <body>
     <div id="main-img-wrapper">
-      <img
-        width="320"
-        src="./Lovepik_com-401339128-data-management-data-analysis-icon-free-vector-illustration-mate.png"
-        alt="coding image"
-      />
+      <img width="320" src="./Lovepik_com-401339128-data-management-data-analysis-icon-free-vector-illustration-mate.png" alt="coding image" />
     </div>
     <div id="intro-main">
       <p>이미 모두의 은행, 패스트뱅크</p>
@@ -61,15 +57,18 @@
 
     const listItems = document.querySelectorAll(".list-item");
 
+    // 지정한 스크롤 안에서 바뀌어야하는 배열의 요소 수 만큼 나누어지는 수를 변수에 할당
+    const division = (listStyleChangeEndY - listStyleChangeStartY) / listItems.length;
+
     window.addEventListener("scroll", () => {
       if (document.getElementById("on")) {
         document.getElementById("on").removeAttribute("id");
       }
-      if (
-        window.scrollY > listStyleChangeStartY &&
-        window.scrollY < listStyleChangeEndY
-      ) {
-        listItems[0].id = "on";
+      if (window.scrollY > listStyleChangeStartY && window.scrollY < listStyleChangeEndY) {
+        // scrollY에서 요소에 접근할 index 뽑기
+        const targetIndex = Math.floor((window.scrollY - listStyleChangeStartY) / division);
+
+        listItems[targetIndex].id = "on";
       }
     });
   </script>
