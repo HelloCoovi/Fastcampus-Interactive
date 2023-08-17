@@ -79,7 +79,10 @@ body {
 
 #panel1-img {
   position: relative;
-  height: 320px;
+  display: flex;
+  align-items: center;
+  height: 420px;
+  overflow: hidden;
   /* 스크롤을 위해서 임의로 추가한 margin */
   margin-bottom: 500px;
 }
