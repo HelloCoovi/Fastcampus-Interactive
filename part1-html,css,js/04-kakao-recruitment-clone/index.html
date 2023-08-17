@@ -66,6 +66,7 @@
     const division = (listStyleChangeEndY - listStyleChangeStartY) / listItems.length;
 
     const panel1Img = document.getElementById("panel1-img");
+    const flyingSantaImage = document.getElementById("flying-santa-image");
 
     window.addEventListener("scroll", () => {
       if (document.getElementById("on")) {
@@ -87,10 +88,15 @@
       // 현재스크롤하단위치 > panel1Img의Y위치 && 현재스크롤하단위치 < panel1Img의Y위치 + panel1Img의높이 + 100px
       //  -> 스크롤이 panel1Img에 진입하거나, 스크롤이 panel1Img요소 + 100을 넘어가기 전까지
       if (scrollYBottom > panel1Img.offsetTop && scrollYBottom < panel1Img.offsetTop + panel1Img.offsetHeight + 100) {
-        console.log(`scrollYBottom: ${scrollYBottom}`);
-        console.log(`panel1Img.offsetTop: ${panel1Img.offsetTop}`);
-        console.log(`panel1Img.offsetHeight: ${panel1Img.offsetHeight}`);
-        console.log("over");
+        // CSS에서 초기에 translate한 값(80px, -13px, 23deg)을 원래대로 돌린다는 느낌으로 동작
+        // 🎯원래대로 == translate가 적용안된 0 상태
+        // 🎯1.3은 원래 위치인 1.0보다 0.3 즉 30 퍼센트 더 이동하라는 뜻
+        const translateX = 80 - (80 * 1.3 * (scrollYBottom - panel1Img.offsetTop)) / (panel1Img.offsetHeight + 100);
+        const translateY = -13 + (13 * (scrollYBottom - panel1Img.offsetTop)) / (panel1Img.offsetHeight + 100);
+
+        const rotationDegree = 23 - (23 * 1.7 * (scrollYBottom - panel1Img.offsetTop)) / (panel1Img.offsetHeight + 100);
+
+        flyingSantaImage.style.transform = `translate(${translateX}px, ${translateY}px) rotate(${rotationDegree}deg)`;
       }
     });
   </script>
