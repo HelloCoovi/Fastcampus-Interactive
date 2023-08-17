@@ -51,7 +51,7 @@
       <li class="list-item">마이너스통장대출</li>
     </ul>
     <main>
-      <section class="panel1-img">
+      <section id="panel1-img">
         <img id="flying-santa-image" src="./santa_flying.png" alt="santa flying" />
       </section>
     </main>
@@ -65,6 +65,8 @@
     // 지정한 스크롤 안에서 바뀌어야하는 배열의 요소 수 만큼 나누어지는 수를 변수에 할당
     const division = (listStyleChangeEndY - listStyleChangeStartY) / listItems.length;
 
+    const panel1Img = document.getElementById("panel1-img");
+
     window.addEventListener("scroll", () => {
       if (document.getElementById("on")) {
         document.getElementById("on").removeAttribute("id");
@@ -74,6 +76,21 @@
         const targetIndex = Math.floor((window.scrollY - listStyleChangeStartY) / division);
 
         listItems[targetIndex].id = "on";
+      }
+
+      // 🎯🎯 스크롤위치 + 현재뷰높이로 현재 화면에서 전체적인 위치를 계산하는 코드
+      const scrollYBottom = window.scrollY + document.documentElement.clientHeight;
+
+      // offsetTop: 해당 요소의 Y축 위치 값(전체문서 기준)
+      // offsetHeight: 해당 요소의 높이 값
+      // 🎯🎯
+      // 현재스크롤하단위치 > panel1Img의Y위치 && 현재스크롤하단위치 < panel1Img의Y위치 + panel1Img의높이 + 100px
+      //  -> 스크롤이 panel1Img에 진입하거나, 스크롤이 panel1Img요소 + 100을 넘어가기 전까지
+      if (scrollYBottom > panel1Img.offsetTop && scrollYBottom < panel1Img.offsetTop + panel1Img.offsetHeight + 100) {
+        console.log(`scrollYBottom: ${scrollYBottom}`);
+        console.log(`panel1Img.offsetTop: ${panel1Img.offsetTop}`);
+        console.log(`panel1Img.offsetHeight: ${panel1Img.offsetHeight}`);
+        console.log("over");
       }
     });
   </script>
