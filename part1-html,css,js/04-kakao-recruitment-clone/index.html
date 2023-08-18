@@ -73,6 +73,18 @@
     const panel1Img = document.getElementById("panel1-img");
     const flyingSantaImage = document.getElementById("flying-santa-image");
 
+    // 스크롤 양에 따른 비디오 재생 위치를 제어하는 변수
+    // 값⬆️ == 비디오재생속도⬇️, 스크롤양⬆️
+    // 값⬇️ == 비디오재생속도⬆️, 스크롤양⬇
+    const videoPlayBack = 500;
+
+    const videoElement = document.getElementById("video");
+
+    // 비디오의 길이와 임의로 지정한 videoPlayBack을 합쳐 video-section의 높이를 조절
+    videoElement.addEventListener("loadedmetadata", () => {
+      document.getElementById("video-section").style.height = videoElement.duration * videoPlayBack + "px";
+    });
+
     window.addEventListener("scroll", () => {
       if (document.getElementById("on")) {
         document.getElementById("on").removeAttribute("id");
