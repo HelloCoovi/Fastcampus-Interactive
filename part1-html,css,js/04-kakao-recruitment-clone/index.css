@@ -115,3 +115,25 @@ body {
   transform: translateY(100px);
   opacity: 0;
 }
+
+#bank-beyond-wrapper {
+  /* 이미지에 centerElement가 적용되었을때 공간이 사라지는것을 막기위해 */
+  /* 기본 높이를 넣어둠(이러면 이미지가 없어져도 기본 공간이 있기때문에 자연스럽게 움직임) */
+  height: 380px;
+}
+#bank-beyond {
+  display: flex;
+  justify-content: center;
+}
+#bank-beyond img {
+  width: 315px;
+}
+
+#white-wrapper {
+  background-color: #f7f7f7;
+  height: 1000px;
+
+  /* z-index 적용을 위한 relative */
+  position: relative;
+  z-index: 10;
+}
