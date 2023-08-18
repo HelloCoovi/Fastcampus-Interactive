@@ -147,6 +147,9 @@ body {
 #slider-content-wrapper {
   overflow-x: scroll;
 }
+#slider-content-wrapper::-webkit-scrollbar {
+  width: 0;
+}
 #slider-content {
   display: flex;
 }
@@ -165,4 +168,10 @@ body {
 }
 #right-button {
   right: 10px;
+}
+#slider-index {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
 }
