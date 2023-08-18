@@ -132,8 +132,37 @@ body {
 #white-wrapper {
   background-color: #f7f7f7;
   height: 1000px;
+  padding-top: 80px;
 
   /* z-index 적용을 위한 relative */
   position: relative;
   z-index: 10;
+}
+
+#slider-container {
+  margin: 0 auto;
+  position: relative;
+  width: 300px;
+}
+#slider-content-wrapper {
+  overflow-x: scroll;
+}
+#slider-content {
+  display: flex;
+}
+.slider-image {
+  width: 300px;
+  height: 466px;
+}
+.slider-button {
+  position: absolute;
+  bottom: -110px;
+  font-size: 40px;
+  cursor: pointer;
+}
+#left-button {
+  left: 10px;
+}
+#right-button {
+  right: 10px;
 }

@@ -68,7 +68,19 @@
           <img src="./05-text.png" alt="sample text" />
         </div>
       </div>
-      <div id="white-wrapper"></div>
+      <div id="white-wrapper">
+        <div id="slider-container">
+          <div id="slider-content-wrapper">
+            <div id="slider-content">
+              <img src="https://picsum.photos/id/1/600/933" class="slider-image" alt="" />
+              <img src="https://picsum.photos/id/59/600/933" class="slider-image" alt="" />
+              <img src="https://picsum.photos/id/89/600/933" class="slider-image" alt="" />
+            </div>
+            <div class="slider-button" id="left-button">&lt;</div>
+            <div class="slider-button" id="right-button">&gt;</div>
+          </div>
+        </div>
+      </div>
     </main>
   </body>
   <script>
@@ -193,6 +205,10 @@
       }
 
       centerElement("bank-beyond");
+    });
+
+    document.getElementById("slider-content-wrapper").addEventListener("scroll", () => {
+      console.log("X 스크롤 작동!");
     });
   </script>
 </html>
