@@ -80,6 +80,16 @@
 
     const videoElement = document.getElementById("video");
 
+    function centerElement(elementId) {
+      const element = document.getElementById(elementId);
+      const parent = element.parentElement;
+
+      // 지정한 요소(fixed-wrapper)가 현재 뷰포트의 중앙에 있는지 확인하는 로직
+      if (window.scrollY > parent.offsetTop - (document.documentElement.clientHeight - element.offsetHeight) / 2) {
+        console.log("중앙 확인!");
+      }
+    }
+
     // 비디오의 길이와 임의로 지정한 videoPlayBack을 합쳐 video-section의 높이를 조절
     videoElement.addEventListener("loadedmetadata", () => {
       document.getElementById("video-section").style.height = videoElement.duration * videoPlayBack + "px";
@@ -115,6 +125,8 @@
 
         flyingSantaImage.style.transform = `translate(${translateX}px, ${translateY}px) rotate(${rotationDegree}deg)`;
       }
+
+      centerElement("fixed-wrapper");
     });
   </script>
 </html>
