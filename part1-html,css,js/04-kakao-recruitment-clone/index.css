@@ -102,3 +102,12 @@ body {
   height: 350px;
   margin: 0 auto;
 }
+#fixed-description {
+  width: 622px;
+  margin: 30px auto 0;
+  color: white;
+  text-align: right;
+  line-height: 50px;
+  font-size: 35px;
+  font-weight: 600;
+}
