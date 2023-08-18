@@ -110,4 +110,8 @@ body {
   line-height: 50px;
   font-size: 35px;
   font-weight: 600;
+
+  /* 기본적으로 투명하게 유지 + 아래에서 등장하게 설정 */
+  transform: translateY(100px);
+  opacity: 0;
 }

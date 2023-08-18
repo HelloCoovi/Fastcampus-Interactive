@@ -87,6 +87,8 @@
 
     const fixedWrapper = document.getElementById("fixed-wrapper");
 
+    const fixedDescription = document.getElementById("fixed-description");
+
     function centerElement(elementId, video) {
       const element = document.getElementById(elementId);
       const parent = element.parentElement;
@@ -115,7 +117,13 @@
       document.getElementById("video-section").style.height = videoElement.duration * videoPlayBack + "px";
     });
 
+    // console.log로 적당한 위치를 찾아서 넣음
+    const fixedDescriptionAppearTiming = 3470;
+    const fixedDescriptionAppearEnds = 3800;
+
     window.addEventListener("scroll", () => {
+      // console.log(window.scrollY);
+
       if (document.getElementById("on")) {
         document.getElementById("on").removeAttribute("id");
       }
@@ -159,6 +167,23 @@
         fixedWrapper.style.left = "initial";
         fixedWrapper.style.transform = "initial";
         fixedWrapper.style.transform = `translateY(${videoSection.offsetHeight - fixedWrapper.offsetHeight}px)`;
+      }
+
+      // fixedDescriptionAppearTiming과 fixedDescriptionAppearEnds 사이일때 실행되는 로직
+      // 요소를 서서히 올리면서
+      if (window.scrollY > fixedDescriptionAppearTiming && window.scrollY < fixedDescriptionAppearEnds) {
+        fixedDescription.style.transform = `translateY(${fixedDescriptionAppearEnds - window.scrollY}px)`;
+
+        // 숫자가 작을수록 서서히 변화
+        fixedDescription.style.opacity = (window.scrollY - fixedDescriptionAppearTiming) / 300;
+        // 글자가 나타나는 이벤트가 끝났을때 적용(fixedDescriptionAppearEnds보다 현재 위치가 더 클때)
+      } else if (window.scrollY > fixedDescriptionAppearEnds) {
+        fixedDescription.style.transform = `translateY(0px)`;
+        fixedDescription.style.opacity = 1;
+        // 그 외에는 기본적으로 투명하게 유지
+      } else {
+        fixedDescription.style.transform = `translateY(100px)`;
+        fixedDescription.style.opacity = 0;
       }
     });
   </script>
