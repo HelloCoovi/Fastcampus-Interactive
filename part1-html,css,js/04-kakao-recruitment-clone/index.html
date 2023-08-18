@@ -85,8 +85,18 @@
       const parent = element.parentElement;
 
       // 지정한 요소(fixed-wrapper)가 현재 뷰포트의 중앙에 있는지 확인하는 로직
+      // if문이 실행되면 해당 요소를 화면 가운데에 고정
+      // 원하는 조건에서 벗어나면 원래대로 초기화
       if (window.scrollY > parent.offsetTop - (document.documentElement.clientHeight - element.offsetHeight) / 2) {
-        console.log("중앙 확인!");
+        element.style.position = "fixed";
+        element.style.top = "50%";
+        element.style.left = "50%";
+        element.style.transform = "translate(-50%, -50%)";
+      } else {
+        element.style.position = "relative";
+        element.style.top = "initial";
+        element.style.left = "initial";
+        element.style.transform = "initial";
       }
     }
 
