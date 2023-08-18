@@ -147,6 +147,8 @@ body {
 #slider-content-wrapper {
   overflow-x: scroll;
   scroll-behavior: smooth;
+
+  scroll-snap-type: x mandatory;
 }
 #slider-content-wrapper::-webkit-scrollbar {
   width: 0;
@@ -157,6 +159,8 @@ body {
 .slider-image {
   width: 300px;
   height: 466px;
+
+  scroll-snap-align: center;
 }
 .slider-button {
   position: absolute;
