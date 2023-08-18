@@ -79,6 +79,9 @@
     const videoPlayBack = 500;
 
     const videoElement = document.getElementById("video");
+    const videoSection = document.getElementById("video-section");
+
+    const fixedWrapper = document.getElementById("fixed-wrapper");
 
     function centerElement(elementId) {
       const element = document.getElementById(elementId);
@@ -137,6 +140,19 @@
       }
 
       centerElement("fixed-wrapper");
+
+      // centerElement의 화면 중앙을 탐지하는 로직처럼 화면 중앙이 videoSection의 끝에 도달하는지 확인
+      // 자연스럽게 애니메이션 해제
+      if (
+        window.scrollY >
+        videoSection.offsetTop + videoSection.offsetHeight - (fixedWrapper.offsetHeight + (document.documentElement.clientHeight - fixedWrapper.offsetHeight) / 2)
+      ) {
+        fixedWrapper.style.position = "relative";
+        fixedWrapper.style.top = "initial";
+        fixedWrapper.style.left = "initial";
+        fixedWrapper.style.transform = "initial";
+        fixedWrapper.style.transform = `translateY(${videoSection.offsetHeight - fixedWrapper.offsetHeight}px)`;
+      }
     });
   </script>
 </html>

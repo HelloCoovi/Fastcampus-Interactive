@@ -93,6 +93,10 @@ body {
   transform: translate(80px, -13px) rotate(23deg);
 }
 
+#video-section {
+  /* 스크롤 해제를 위한 임의의 margin */
+  margin-bottom: 1000px;
+}
 #video {
   display: block;
   height: 350px;
