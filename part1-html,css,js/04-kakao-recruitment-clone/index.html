@@ -83,7 +83,7 @@
 
     const fixedWrapper = document.getElementById("fixed-wrapper");
 
-    function centerElement(elementId) {
+    function centerElement(elementId, video) {
       const element = document.getElementById(elementId);
       const parent = element.parentElement;
 
@@ -95,6 +95,9 @@
         element.style.top = "50%";
         element.style.left = "50%";
         element.style.transform = "translate(-50%, -50%)";
+        if (video) {
+          video.currentTime = (window.scrollY - videoSection.offsetTop) / videoPlayBack;
+        }
       } else {
         element.style.position = "relative";
         element.style.top = "initial";
@@ -139,7 +142,7 @@
         flyingSantaImage.style.transform = `translate(${translateX}px, ${translateY}px) rotate(${rotationDegree}deg)`;
       }
 
-      centerElement("fixed-wrapper");
+      centerElement("fixed-wrapper", videoElement);
 
       // centerElement의 화면 중앙을 탐지하는 로직처럼 화면 중앙이 videoSection의 끝에 도달하는지 확인
       // 자연스럽게 애니메이션 해제
