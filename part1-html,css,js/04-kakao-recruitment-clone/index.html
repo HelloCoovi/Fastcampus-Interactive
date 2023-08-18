@@ -221,8 +221,6 @@
       // 🎯🧰offsetLeft로 특정이미지가 부모요소에서 떨어진 거리를 구하고 해당 거리만큼 스크롤을 작동 시킴
       // 이미지 개수에 상관없이 스크롤을 해줄수 있음
       sliderContentWrapper.scrollLeft = sliderImages[currentImage].offsetLeft;
-
-      sliderIndex.innerText = `${currentImage + 1} / ${sliderImages.length}`;
     };
 
     document.getElementById("left-button").addEventListener("click", () => {
@@ -234,6 +232,9 @@
 
     sliderContentWrapper.addEventListener("scroll", () => {
       const imageWidth = document.querySelectorAll(".slider-image")[0].offsetWidth;
+
+      currentImage = Math.round(sliderContentWrapper.scrollLeft / imageWidth);
+      sliderIndex.innerText = `${currentImage + 1} / ${sliderImages.length}`;
     });
   </script>
 </html>
