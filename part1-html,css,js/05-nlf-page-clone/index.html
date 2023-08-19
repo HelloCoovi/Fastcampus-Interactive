@@ -16,7 +16,10 @@
 
   <script>
     document.addEventListener("mousemove", (event) => {
-      console.log(`마우스X: ${event.clientX}, \n마우스Y: ${event.clientY}`);
+      const cursorDefaultInner = document.querySelector(".cursor__default__inner");
+
+      cursorDefaultInner.style.top = event.clientY + "px";
+      cursorDefaultInner.style.left = event.clientX + "px";
     });
   </script>
 </html>
