@@ -36,3 +36,31 @@ body {
   /* 🎯브라우저에 해당 요소의 transform이 변할것이라는걸 미리 알려 성능을 개선시킴 */
   will-change: transform;
 }
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(10);
+    opacity: 0;
+  }
+}
+
+.ripple {
+  position: absolute;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #d5a54e;
+  animation: ripple 0.5s ease-out;
+  animation-fill-mode: forwards;
+  /* 생긴효과가 커서 아래로 갈 수 있게 index 설정 */
+  z-index: -1;
+}

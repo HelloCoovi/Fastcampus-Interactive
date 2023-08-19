@@ -60,5 +60,24 @@
       requestAnimationFrame(cursorTrace);
     }
     cursorTrace();
+
+    function createRipple(event) {
+      let ripple = document.createElement("span");
+      ripple.classList.add("ripple");
+
+      cursor.appendChild(ripple);
+
+      // 🥅DOM에 요소를 추가하기 전에 포지션을 넣으면 적용되지 않기 때문에 append를 먼저해줘야함🥅
+      ripple.style.top = event.clientY - ripple.clientHeight / 2 + "px";
+      ripple.style.left = event.clientX - ripple.clientWidth / 2 + "px";
+
+      ripple.addEventListener("animationend", () => {
+        cursor.removeChild(ripple);
+      });
+    }
+
+    document.addEventListener("click", (event) => {
+      createRipple(event);
+    });
   </script>
 </html>
