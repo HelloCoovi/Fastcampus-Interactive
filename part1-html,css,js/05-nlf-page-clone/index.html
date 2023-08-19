@@ -20,6 +20,10 @@
   <script>
     let mouseX = 0;
     let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let scale = 1;
+    let targetScale = 1;
 
     document.addEventListener("mousemove", (event) => {
       mouseX = event.clientX;
@@ -34,26 +38,27 @@
       // cursorTraceInner.style.left = event.clientX + "px";
     });
 
-    let currentX = 0;
-    let currentY = 0;
-    const cursorTraceInner = document.querySelector(".cursor__trace__inner");
-    function cursorTrace() {
-      currentX += (mouseX - currentX) * 0.2;
-      currentY += (mouseY - currentY) * 0.2;
-
-      cursorTraceInner.style.transform = `translate(${currentX - 20}px, ${currentY - 20}px)`;
-
-      requestAnimationFrame(cursorTrace);
-    }
-    cursorTrace();
-
     const cursor = document.querySelector(".cursor");
 
     document.addEventListener("mousedown", () => {
       cursor.classList.add("cursor--active");
+      targetScale = 0.5;
     });
     document.addEventListener("mouseup", () => {
       cursor.classList.remove("cursor--active");
+      targetScale = 1;
     });
+
+    const cursorTraceInner = document.querySelector(".cursor__trace__inner");
+    function cursorTrace() {
+      currentX += (mouseX - currentX) * 0.2;
+      currentY += (mouseY - currentY) * 0.2;
+      scale += (targetScale - scale) * 0.1;
+
+      cursorTraceInner.style.transform = `translate(${currentX - 20}px, ${currentY - 20}px) scale(${scale})`;
+
+      requestAnimationFrame(cursorTrace);
+    }
+    cursorTrace();
   </script>
 </html>
