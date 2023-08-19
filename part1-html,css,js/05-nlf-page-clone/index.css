@@ -30,6 +30,9 @@ body {
   height: 40px;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.25);
-  transform: translate(-50%, -50%);
-  transition: all 0.04s ease;
+  /* transform: translate(-50%, -50%); */
+  /* transition: all 0.04s ease; */
+
+  /* 🎯브라우저에 해당 요소의 transform이 변할것이라는걸 미리 알려 성능을 개선시킴 */
+  will-change: transform;
 }

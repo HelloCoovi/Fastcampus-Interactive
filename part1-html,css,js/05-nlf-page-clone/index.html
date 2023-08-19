@@ -18,15 +18,33 @@
   </body>
 
   <script>
+    let mouseX = 0;
+    let mouseY = 0;
+
     document.addEventListener("mousemove", (event) => {
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+
       const cursorDefaultInner = document.querySelector(".cursor__default__inner");
-      const cursorTraceInner = document.querySelector(".cursor__trace__inner");
+      // const cursorTraceInner = document.querySelector(".cursor__trace__inner");
 
       cursorDefaultInner.style.top = event.clientY + "px";
       cursorDefaultInner.style.left = event.clientX + "px";
-
-      cursorTraceInner.style.top = event.clientY + "px";
-      cursorTraceInner.style.left = event.clientX + "px";
+      // cursorTraceInner.style.top = event.clientY + "px";
+      // cursorTraceInner.style.left = event.clientX + "px";
     });
+
+    let currentX = 0;
+    let currentY = 0;
+    const cursorTraceInner = document.querySelector(".cursor__trace__inner");
+    function cursorTrace() {
+      currentX += (mouseX - currentX) * 0.2;
+      currentY += (mouseY - currentY) * 0.2;
+
+      cursorTraceInner.style.transform = `translate(${currentX - 20}px, ${currentY - 20}px)`;
+
+      requestAnimationFrame(cursorTrace);
+    }
+    cursorTrace();
   </script>
 </html>
