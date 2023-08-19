@@ -1,1 +1,20 @@
 @import "./reset.css";
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 9999;
+}
+.cursor__default__inner {
+  position: absolute;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(10, 27, 16, 2.5);
+  border: 2px solid #d5a54e;
+  border-radius: 50%;
+}
