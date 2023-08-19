@@ -46,5 +46,14 @@
       requestAnimationFrame(cursorTrace);
     }
     cursorTrace();
+
+    const cursor = document.querySelector(".cursor");
+
+    document.addEventListener("mousedown", () => {
+      cursor.classList.add("cursor--active");
+    });
+    document.addEventListener("mouseup", () => {
+      cursor.classList.remove("cursor--active");
+    });
   </script>
 </html>
