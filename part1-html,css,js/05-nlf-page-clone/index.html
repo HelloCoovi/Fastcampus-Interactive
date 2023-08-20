@@ -90,8 +90,11 @@
     let intervalId = null;
     let btnScale = 1;
 
+    const preloaderHideThreshold = 18;
+
     function setPreloaderStyle(btnScale) {
       preloaderBtn.style.transform = `scale(${btnScale})`;
+      document.querySelector(".preloader__btn_hold").style.opacity = 1 - (btnScale - 1) / preloaderHideThreshold;
     }
 
     preloaderBtn.addEventListener("mousedown", () => {
