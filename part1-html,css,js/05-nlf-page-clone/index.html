@@ -95,6 +95,8 @@
     }
 
     preloaderBtn.addEventListener("mousedown", () => {
+      if (intervalId) clearInterval(intervalId);
+
       intervalId = setInterval(() => {
         btnScale += 0.175;
 
@@ -103,6 +105,8 @@
     });
 
     preloaderBtn.addEventListener("mouseup", () => {
+      if (intervalId) clearInterval(intervalId);
+
       intervalId = setInterval(() => {
         btnScale -= 0.075;
 
