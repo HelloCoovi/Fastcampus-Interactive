@@ -13,6 +13,8 @@ body {
   bottom: 0;
 
   z-index: 9999;
+  /* 🥅 커스텀 커서에 적용된 요소들인해 다른 요소의 이벤트가 실행되지 않는 현상 해결 */
+  pointer-events: none !important;
 }
 .cursor__default__inner {
   position: absolute;

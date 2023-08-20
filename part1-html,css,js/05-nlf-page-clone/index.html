@@ -84,5 +84,22 @@
     document.addEventListener("click", (event) => {
       createRipple(event);
     });
+
+    const preloaderBtn = document.querySelector(".preloader__btn");
+
+    let intervalId = null;
+    let btnScale = 1;
+
+    function setPreloaderStyle(btnScale) {
+      preloaderBtn.style.transform = `scale(${btnScale})`;
+    }
+
+    preloaderBtn.addEventListener("mousedown", () => {
+      intervalId = setInterval(() => {
+        btnScale += 0.175;
+
+        setPreloaderStyle(btnScale);
+      }, 10);
+    });
   </script>
 </html>
