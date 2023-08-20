@@ -2,6 +2,7 @@
 
 body {
   cursor: none !important;
+  background-color: #1e4029;
 }
 
 .cursor {
@@ -63,4 +64,35 @@ body {
   animation-fill-mode: forwards;
   /* 생긴효과가 커서 아래로 갈 수 있게 index 설정 */
   z-index: -1;
+}
+
+.preloader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #521714;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+
+.preloader__btn {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: none;
+  color: rgb(213, 165, 78);
+  background-color: rgb(30, 64, 41);
+  /* 가운데 정렬용 margin */
+  margin-top: -60px;
+  margin-left: -60px;
+}
+.preloader__btn_hold {
+  font-size: 19px;
+  line-height: 20px;
+  font-weight: 800;
+  letter-spacing: normal;
 }
