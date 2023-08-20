@@ -101,5 +101,18 @@
         setPreloaderStyle(btnScale);
       }, 10);
     });
+
+    preloaderBtn.addEventListener("mouseup", () => {
+      intervalId = setInterval(() => {
+        btnScale -= 0.075;
+
+        setPreloaderStyle(btnScale);
+
+        if (btnScale <= 1) {
+          btnScale = 1;
+          clearInterval(intervalId);
+        }
+      }, 10);
+    });
   </script>
 </html>
