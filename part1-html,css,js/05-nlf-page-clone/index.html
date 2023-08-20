@@ -15,11 +15,13 @@
         <span class="cursor__trace__inner"></span>
       </div>
     </div>
-    <section class="preloader">
+    <section class="preloader shown-area">
       <button class="preloader__btn">
         <span class="preloader__btn_hold">Hold</span>
       </button>
     </section>
+    <!-- 작동 테스트 요소(지울거임) -->
+    <div class="test-area hidden-area">now you see me</div>
   </body>
 
   <script>
@@ -104,6 +106,18 @@
         btnScale += 0.175;
 
         setPreloaderStyle(btnScale);
+
+        if (btnScale >= preloaderHideThreshold) {
+          const testArea = document.querySelector(".test-area");
+
+          document.querySelector(".preloader").classList.remove("shown-area");
+          document.querySelector(".preloader").classList.add("hidden-area");
+
+          testArea.classList.remove("hidden-area");
+          testArea.classList.add("shown-area");
+
+          clearInterval(intervalId);
+        }
       }, 10);
     });
 

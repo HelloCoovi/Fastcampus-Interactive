@@ -5,6 +5,33 @@ body {
   background-color: #1e4029;
 }
 
+.shown-area {
+  display: block;
+  opacity: 1;
+}
+.hidden-area {
+  display: none;
+  opacity: 0;
+}
+/* 작동 테스트용 요소(지울거임) */
+.test-area {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  background-color: rgb(215, 72, 255);
+  margin-top: -150px;
+  margin-left: -150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
 .cursor {
   position: fixed;
   top: 0;
@@ -77,7 +104,6 @@ body {
   height: 100%;
   z-index: 999;
 }
-
 .preloader__btn {
   position: absolute;
   top: 50vh;
