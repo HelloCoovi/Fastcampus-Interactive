@@ -13,24 +13,6 @@ body {
   display: none;
   opacity: 0;
 }
-/* 작동 테스트용 요소(지울거임) */
-.test-area {
-  position: absolute;
-  top: 50vh;
-  left: 50vw;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  border: none;
-  color: white;
-  background-color: rgb(215, 72, 255);
-  margin-top: -150px;
-  margin-left: -150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 30px;
-}
 
 .cursor {
   position: fixed;
@@ -103,6 +85,8 @@ body {
   width: 100%;
   height: 100%;
   z-index: 999;
+
+  overflow: hidden;
 }
 .preloader__btn {
   position: absolute;
@@ -123,4 +107,27 @@ body {
   line-height: 20px;
   font-weight: 800;
   letter-spacing: normal;
+}
+
+.header {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+.circle {
+  position: absolute;
+  display: inline-block;
+  width: 350px;
+  height: 350px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
+#circle-1 {
+  top: -100px;
+  left: -130px;
+}
+#circle-2 {
+  bottom: 5vh;
+  right: -230px;
 }
