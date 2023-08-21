@@ -100,6 +100,8 @@
 
     const preloaderBtn = document.querySelector(".preloader__btn");
 
+    const header = document.querySelector(".header");
+
     let intervalId = null;
     let btnScale = 1;
 
@@ -119,8 +121,6 @@
         setPreloaderStyle(btnScale);
 
         if (btnScale >= preloaderHideThreshold) {
-          const header = document.querySelector(".header");
-
           document.querySelector(".preloader").classList.remove("shown-area");
           document.querySelector(".preloader").classList.add("hidden-area");
 
@@ -145,6 +145,22 @@
           clearInterval(intervalId);
         }
       }, 10);
+    });
+
+    header.addEventListener("mousemove", (event) => {
+      // 🎯 header 영역 안에 마우스가 있을때만 동작하게 설계(header.client~)
+      const xRelativeToHeader = event.clientX / header.clientWidth;
+      const yRelativeToHeader = event.clientY / header.clientHeight;
+
+      document.querySelector(".header__title").style.transform = `translate(${xRelativeToHeader * -50}px, ${yRelativeToHeader * -50}px)`;
+
+      document.querySelector("#circle-1").style.transform = `translate(${xRelativeToHeader * -25}px, ${yRelativeToHeader * -25}px)`;
+      document.querySelector("#circle-2").style.transform = `translate(${xRelativeToHeader * -25}px, ${yRelativeToHeader * -25}px)`;
+
+      document.querySelector("#cube__image_1").style.transform = `translate(${xRelativeToHeader * -15}px, ${yRelativeToHeader * -15}px)`;
+      document.querySelector("#cube__image_2").style.transform = `translate(${xRelativeToHeader * -8}px, ${yRelativeToHeader * -8}px)`;
+      document.querySelector("#cube__image_3").style.transform = `translate(${xRelativeToHeader * -20}px, ${yRelativeToHeader * -20}px)`;
+      document.querySelector("#cube__image_4").style.transform = `translate(${xRelativeToHeader * 5}px, ${yRelativeToHeader * 5}px)`;
     });
   </script>
 </html>
