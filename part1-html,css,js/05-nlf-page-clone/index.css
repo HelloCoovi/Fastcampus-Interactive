@@ -165,3 +165,41 @@ body {
   color: rgb(213, 165, 78);
   text-align: center;
 }
+
+.poster__parallax {
+  position: relative;
+  height: 1500px;
+}
+.poster-image {
+  position: absolute;
+  /* opacity: 0; */
+}
+.poster-image_wrapper {
+  position: absolute;
+  width: 100%;
+}
+#poster-image_wrapper_1 {
+  right: 0;
+  height: 100%;
+}
+#poster-image_wrapper_2 {
+  top: 10%;
+  left: 5%;
+  height: 667px;
+}
+#poster-image_wrapper_3 {
+  top: 35%;
+  right: 0;
+  height: 772px;
+}
+#poster-image_1 {
+  right: 0;
+  width: 1127px;
+}
+#poster-image_2 {
+  height: 100%;
+}
+#poster-image_3 {
+  right: 0;
+  height: 100%;
+}

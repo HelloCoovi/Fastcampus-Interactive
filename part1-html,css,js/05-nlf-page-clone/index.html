@@ -33,6 +33,19 @@
         <div>PROJECTS</div>
       </h1>
     </section>
+    <section class="poster hidden-area">
+      <div class="poster__parallax">
+        <div id="poster-image_wrapper_1" class="poster-image_wrapper">
+          <img id="poster-image_1" class="poster-image" src="./images/posterImages/poster_image_1.png" alt="" />
+        </div>
+        <div id="poster-image_wrapper_2" class="poster-image_wrapper">
+          <img id="poster-image_2" class="poster-image" src="./images/posterImages/poster_image_2.png" alt="" />
+        </div>
+        <div id="poster-image_wrapper_3" class="poster-image_wrapper">
+          <img id="poster-image_3" class="poster-image" src="./images/posterImages/poster_image_3.png" alt="" />
+        </div>
+      </div>
+    </section>
   </body>
 
   <script>
@@ -121,11 +134,16 @@
         setPreloaderStyle(btnScale);
 
         if (btnScale >= preloaderHideThreshold) {
+          const poster = document.querySelector(".poster");
+
           document.querySelector(".preloader").classList.remove("shown-area");
           document.querySelector(".preloader").classList.add("hidden-area");
 
           header.classList.remove("hidden-area");
+          poster.classList.remove("hidden-area");
+
           header.classList.add("shown-area");
+          poster.classList.add("shown-area");
 
           clearInterval(intervalId);
         }
