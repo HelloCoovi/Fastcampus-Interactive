@@ -180,5 +180,21 @@
       document.querySelector("#cube__image_3").style.transform = `translate(${xRelativeToHeader * -20}px, ${yRelativeToHeader * -20}px)`;
       document.querySelector("#cube__image_4").style.transform = `translate(${xRelativeToHeader * 5}px, ${yRelativeToHeader * 5}px)`;
     });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("poster-image_state_visible");
+            console.log("observer 작동!");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    document.querySelectorAll(".poster-image_wrapper").forEach((poster) => {
+      observer.observe(poster);
+    });
   </script>
 </html>
