@@ -34,4 +34,13 @@ const y = 100
 const radius = 50
 const particle = new Particle(x, y, radius)
 
-particle.draw()
+// requestAnimationFrame으로 애니메이션 구현
+function animate() {
+  window.requestAnimationFrame(animate)
+  // 캔버스 전체를 지우는 코드(좌표, canvas 가로, 세로)
+  ctx.clearRect(0, 0, canvasWidth, canvasHeight)
+  // 그리기 시작
+  particle.draw()
+}
+
+animate()
