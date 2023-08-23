@@ -3,8 +3,8 @@ const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 const dpr = window.devicePixelRatio
 
-const canvasWidth = 300
-const canvasHeight = 300
+const canvasWidth = window.innerWidth
+const canvasHeight = window.innerHeight
 
 canvas.style.width = canvasWidth + "px"
 canvas.style.height = canvasHeight + "px"
