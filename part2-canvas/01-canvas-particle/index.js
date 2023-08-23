@@ -34,13 +34,24 @@ const y = 100
 const radius = 50
 const particle = new Particle(x, y, radius)
 
+let interval = 1000 / 60
+let now, delta
+let then = Date.now()
+
 // requestAnimationFrame으로 애니메이션 구현
 function animate() {
   window.requestAnimationFrame(animate)
-  // 캔버스 전체를 지우는 코드(좌표, canvas 가로, 세로)
+  now = Date.now()
+  delta = now - then
+
+  if (delta < interval) return
+
+  // 캔버스 전체를 지우고 y 그리기
   ctx.clearRect(0, 0, canvasWidth, canvasHeight)
-  // 그리기 시작
+  particle.y += 1 // 시작지점(좌측 상단)에서 y방향으로+(밑으로 내림)
   particle.draw()
+
+  then = now - (delta % interval)
 }
 
 animate()
