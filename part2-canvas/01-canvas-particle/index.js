@@ -33,7 +33,7 @@ class Particle {
   }
 }
 
-const TOTAL = 5
+const TOTAL = 20
 const randomNumBetween = (min, max) => {
   return Math.random() * (max - min + 1) + min
 }
@@ -47,7 +47,7 @@ for (let i = 0; i < TOTAL; i++) {
   const x = randomNumBetween(0, canvasWidth)
   const y = randomNumBetween(0, canvasHeight)
   const radius = randomNumBetween(50, 100)
-  const vy = randomNumBetween(1, 5)
+  const vy = randomNumBetween(1, 3)
   particles.push(new Particle(x, y, radius, vy))
 }
 
@@ -69,6 +69,13 @@ function animate() {
   particles.forEach((particle => {
     particle.update()
     particle.draw()
+
+    if (particle.y - particle.radius > canvasHeight) {
+      particle.x = randomNumBetween(0, canvasWidth)
+      particle.y = -particle.radius
+      particle.radius = randomNumBetween(50, 100)
+      particle.vy = randomNumBetween(1, 3)
+    }
   }))
 
   then = now - (delta % interval)
