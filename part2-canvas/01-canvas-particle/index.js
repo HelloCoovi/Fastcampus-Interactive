@@ -20,8 +20,11 @@ class Particle {
     this.y = y
     this.radius = radius
     this.vy = vy
+    this.acc = 1.05
+    // this.acc = 0.99
   }
   update() {
+    this.vy *= this.acc
     this.y += this.vy
   }
   draw() {
@@ -33,7 +36,7 @@ class Particle {
   }
 }
 
-const TOTAL = 20
+const TOTAL = 30
 const randomNumBetween = (min, max) => {
   return Math.random() * (max - min + 1) + min
 }
