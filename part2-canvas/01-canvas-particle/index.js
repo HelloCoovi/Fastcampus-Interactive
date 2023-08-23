@@ -15,10 +15,14 @@ ctx.scale(dpr, dpr)
 ctx.fillRect(10, 10, 50, 50)
 
 class Particle {
-  constructor(x, y, radius) {
+  constructor(x, y, radius, vy) {
     this.x = x
     this.y = y
     this.radius = radius
+    this.vy = vy
+  }
+  update() {
+    this.y += this.vy
   }
   draw() {
     ctx.beginPath()
@@ -43,7 +47,8 @@ for (let i = 0; i < TOTAL; i++) {
   const x = randomNumBetween(0, canvasWidth)
   const y = randomNumBetween(0, canvasHeight)
   const radius = randomNumBetween(50, 100)
-  particles.push(new Particle(x, y, radius))
+  const vy = randomNumBetween(1, 5)
+  particles.push(new Particle(x, y, radius, vy))
 }
 
 let interval = 1000 / 60
@@ -62,6 +67,7 @@ function animate() {
   ctx.clearRect(0, 0, canvasWidth, canvasHeight)
 
   particles.forEach((particle => {
+    particle.update()
     particle.draw()
   }))
 
