@@ -41,9 +41,6 @@ const randomNumBetween = (min, max) => {
   return Math.random() * (max - min + 1) + min
 }
 
-const anime = () => {
-
-}
 let particles = []
 
 for (let i = 0; i < TOTAL; i++) {
