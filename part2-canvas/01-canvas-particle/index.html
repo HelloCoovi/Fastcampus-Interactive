@@ -13,12 +13,26 @@
         overflow: hidden;
       }
       canvas {
-        background-color: #f1f1f1;
+        filter: url("#gooey");
+        /* gooey 효과가 적용되긴 하지만 배경이 반드시 필요하고 요소의 색이 왜곡되기 때문에 나쁜 방법임 */
+        /* filter: blur(30px) contrast(30);
+        background-color: #f1f1f1; */
       }
     </style>
   </head>
   <body>
     <canvas></canvas>
+    <svg>
+      <defs>
+        <!-- 필터의 이름 -->
+        <filter id="gooey">
+          <!-- in: 적용할요소, SourceGraphic: 현재요소 선택, stdDeviation: 투명도(흐림정도), result: 해당 효과의 이름 -->
+          <feGaussianBlur in="SourceGraphic" stdDeviation="40" result="blur1" />
+          <!-- type: 적용할 모드, values: RGBA값 행렬이며 마지막 A(투명도)를 조정해서 효과를 적용가능 -->
+          <feColorMatrix in="blur1" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 100 -23" />
+        </filter>
+      </defs>
+    </svg>
     <script type="module" src="./index.js"></script>
   </body>
 </html>
