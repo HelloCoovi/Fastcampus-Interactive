@@ -3,17 +3,6 @@ const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 const dpr = window.devicePixelRatio
 
-const canvasWidth = window.innerWidth
-const canvasHeight = window.innerHeight
-
-canvas.style.width = canvasWidth + "px"
-canvas.style.height = canvasHeight + "px"
-canvas.width = canvasWidth * dpr
-canvas.height = canvasHeight * dpr
-ctx.scale(dpr, dpr)
-
-ctx.fillRect(10, 10, 50, 50)
-
 // dat.gui 생성자
 let gui = new dat.GUI()
 
@@ -81,19 +70,35 @@ class Particle {
   }
 }
 
-const TOTAL = 30
 const randomNumBetween = (min, max) => {
   return Math.random() * (max - min + 1) + min
 }
 
-let particles = []
+let canvasWidth
+let canvasHeight
+let particles
 
-for (let i = 0; i < TOTAL; i++) {
-  const x = randomNumBetween(0, canvasWidth)
-  const y = randomNumBetween(0, canvasHeight)
-  const radius = randomNumBetween(50, 100)
-  const vy = randomNumBetween(1, 3)
-  particles.push(new Particle(x, y, radius, vy))
+function init() {
+  canvasWidth = window.innerWidth
+  canvasHeight = window.innerHeight
+
+  canvas.width = canvasWidth * dpr
+  canvas.height = canvasHeight * dpr
+  ctx.scale(dpr, dpr)
+
+  canvas.style.width = canvasWidth + 'px'
+  canvas.style.height = canvasHeight + 'px'
+
+  particles = []
+  const TOTAL = canvasWidth / 12
+
+  for (let i = 0; i < TOTAL; i++) {
+    const x = randomNumBetween(0, canvasWidth)
+    const y = randomNumBetween(0, canvasHeight)
+    const radius = randomNumBetween(50, 100)
+    const vy = randomNumBetween(1, 3)
+    particles.push(new Particle(x, y, radius, vy))
+  }
 }
 
 let interval = 1000 / 60
@@ -126,4 +131,11 @@ function animate() {
   then = now - (delta % interval)
 }
 
-animate()
+window.addEventListener('load', () => {
+  init()
+  animate()
+})
+
+window.addEventListener('resize', () => {
+  init()
+})
