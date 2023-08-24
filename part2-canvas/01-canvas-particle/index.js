@@ -18,7 +18,7 @@ let gui = new dat.GUI()
 // 조작할 요소 지정
 const controls = {
   blurValue: 40,
-  alphaChannel: 100,
+  alphaChannel: 80,
   alphaOffset: -23,
   acc: 1.03
 }

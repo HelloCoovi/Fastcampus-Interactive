@@ -38,7 +38,7 @@
           <!-- in: 적용할요소, SourceGraphic: 현재요소 선택, stdDeviation: 투명도(흐림정도), result: 해당 효과의 이름 -->
           <feGaussianBlur in="SourceGraphic" stdDeviation="40" result="blur1" />
           <!-- type: 적용할 모드, values: RGBA값 행렬이며 마지막 A(투명도)를 조정해서 효과를 적용가능 -->
-          <feColorMatrix in="blur1" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 100 -23" />
+          <feColorMatrix in="blur1" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 80 -23" />
         </filter>
       </defs>
     </svg>
