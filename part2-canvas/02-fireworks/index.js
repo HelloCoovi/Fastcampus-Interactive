@@ -51,7 +51,7 @@ class Canvas extends CanvasOption {
       delta = now - then
       if (delta < this.interval) return
 
-      this.ctx.fillStyle = this.bgColor
+      this.ctx.fillStyle = this.bgColor + "35" // #00000035
       this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight)
 
       this.particles.forEach((particle, index) => {
