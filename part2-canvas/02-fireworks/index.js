@@ -22,7 +22,9 @@ class Canvas extends CanvasOption {
       const vx = r * Math.cos(angle)
       const vy = r * Math.sin(angle)
 
-      this.particles.push(new Particle(x, y, vx, vy))
+      const opacity = randomNumBetween(0.6, 1)
+
+      this.particles.push(new Particle(x, y, vx, vy, opacity))
     }
   }
 
@@ -74,4 +76,9 @@ window.addEventListener("load", () => {
 
 window.addEventListener("resize", () => {
   canvas.init()
+})
+
+// 🩺 개발중 파티클 테스트를 위한 코드
+window.addEventListener("click", () => {
+  canvas.createParticles()
 })
