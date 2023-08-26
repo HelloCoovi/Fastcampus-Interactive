@@ -11,13 +11,13 @@ class Canvas extends CanvasOption {
   }
 
   createParticles() {
-    const PARTICLE_NUM = 20
+    const PARTICLE_NUM = 40
     const x = randomNumBetween(0, this.canvasWidth)
     const y = randomNumBetween(0, this.canvasWidth)
 
     for (let i = 0; i < PARTICLE_NUM; i++) {
-      const vx = randomNumBetween(-1, 1)
-      const vy = randomNumBetween(-1, 1)
+      const vx = randomNumBetween(-5, 5)
+      const vy = randomNumBetween(-5, 5)
 
       this.particles.push(new Particle(x, y, vx, vy))
     }
@@ -49,9 +49,11 @@ class Canvas extends CanvasOption {
       this.ctx.fillStyle = this.bgColor
       this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight)
 
-      this.particles.forEach((particle) => {
+      this.particles.forEach((particle, index) => {
         particle.update()
         particle.draw()
+
+        if (particle.opacity < 0) this.particles.splice(index, 1)
       })
 
       then = now - (delta % this.interval)
