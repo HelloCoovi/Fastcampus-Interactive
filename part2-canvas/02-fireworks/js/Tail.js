@@ -14,7 +14,7 @@ export default class Tail extends CanvasOption {
     this.y += this.vy
   }
   draw() {
-    this.ctx.fillStyle = this.color
+    this.ctx.fillStyle = `rgba(${this.color}, 1)`
     this.ctx.beginPath()
     this.ctx.arc(this.x, this.y, 1, 0, Math.PI * 2)
     this.ctx.fill()

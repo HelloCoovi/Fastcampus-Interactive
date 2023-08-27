@@ -16,14 +16,14 @@ class Canvas extends CanvasOption {
   createTail() {
     const x = randomNumBetween(this.canvasWidth * 0.1, this.canvasWidth * 0.9)
     const vy = this.canvasHeight * randomNumBetween(0.003, 0.018) * -1
-    const color = "white"
+    const color = "255, 255, 255"
     this.tails.push(new Tail(x, vy, color))
   }
 
-  createParticles() {
+  createParticles(x, y, color) {
     const PARTICLE_NUM = 200
-    const x = randomNumBetween(0, this.canvasWidth)
-    const y = randomNumBetween(0, this.canvasWidth)
+    // const x = randomNumBetween(0, this.canvasWidth)
+    // const y = randomNumBetween(0, this.canvasWidth)
 
     for (let i = 0; i < PARTICLE_NUM; i++) {
       const r = randomNumBetween(2, 100) * hypotenuse(window.innerWidth, window.innerHeight) * 0.0001
@@ -34,7 +34,7 @@ class Canvas extends CanvasOption {
 
       const opacity = randomNumBetween(0.6, 1)
 
-      this.particles.push(new Particle(x, y, vx, vy, opacity))
+      this.particles.push(new Particle(x, y, vx, vy, opacity, color))
     }
   }
 
@@ -47,8 +47,6 @@ class Canvas extends CanvasOption {
 
     this.canvas.style.width = this.canvasWidth + "px"
     this.canvas.style.height = this.canvasHeight + "px"
-
-    this.createParticles()
   }
 
   render() {
@@ -65,12 +63,17 @@ class Canvas extends CanvasOption {
       this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight)
 
 
-      // if (Math.random() < 0.03) this.createTail()
-      this.createTail()
+      if (Math.random() < 0.03) this.createTail()
+      // this.createTail()
 
       this.tails.forEach((tail, index) => {
         tail.update()
         tail.draw()
+
+        if (tail.vy > -1) {
+          this.tails.splice(index, 1)
+          this.createParticles(tail.x, tail.y, tail.color)
+        }
       })
 
       this.particles.forEach((particle, index) => {
@@ -95,9 +98,4 @@ window.addEventListener("load", () => {
 
 window.addEventListener("resize", () => {
   canvas.init()
-})
-
-// 🩺 개발중 파티클 테스트를 위한 코드
-window.addEventListener("click", () => {
-  canvas.createParticles()
 })
