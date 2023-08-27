@@ -1,6 +1,7 @@
 import CanvasOption from "./js/CanvasOption.js"
 import Particle from "./js/Particle.js"
 import Tail from "./js/Tail.js"
+import Spark from "./js/spark.js"
 
 import { randomNumBetween } from "./js/utils.js"
 import { hypotenuse } from "./js/utils.js"
@@ -11,6 +12,7 @@ class Canvas extends CanvasOption {
 
     this.tails = []
     this.particles = []
+    this.sparks = []
   }
 
   createTail() {
@@ -80,7 +82,18 @@ class Canvas extends CanvasOption {
         particle.update()
         particle.draw()
 
+        if (Math.random() < 0.1) {
+          this.sparks.push(new Spark(particle.x, particle.y, 0.35))
+        }
+
         if (particle.opacity < 0) this.particles.splice(index, 1)
+      })
+
+      this.sparks.forEach((spark, index) => {
+        spark.update()
+        spark.draw()
+
+        if (spark.opacity < 0) this.sparks.splice(index, 1)
       })
 
       then = now - (delta % this.interval)
