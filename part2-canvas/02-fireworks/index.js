@@ -1,5 +1,6 @@
 import CanvasOption from "./js/CanvasOption.js"
 import Particle from "./js/Particle.js"
+import Tail from "./js/Tail.js"
 
 import { randomNumBetween } from "./js/utils.js"
 import { hypotenuse } from "./js/utils.js"
@@ -8,7 +9,15 @@ class Canvas extends CanvasOption {
   constructor() {
     super()
 
+    this.tails = []
     this.particles = []
+  }
+
+  createTail() {
+    const x = randomNumBetween(this.canvasWidth * 0.1, this.canvasWidth * 0.9)
+    const vy = this.canvasHeight * randomNumBetween(0.003, 0.018) * -1
+    const color = "white"
+    this.tails.push(new Tail(x, vy, color))
   }
 
   createParticles() {
@@ -54,6 +63,15 @@ class Canvas extends CanvasOption {
 
       this.ctx.fillStyle = this.bgColor + "35" // #00000035
       this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight)
+
+
+      // if (Math.random() < 0.03) this.createTail()
+      this.createTail()
+
+      this.tails.forEach((tail, index) => {
+        tail.update()
+        tail.draw()
+      })
 
       this.particles.forEach((particle, index) => {
         particle.update()
