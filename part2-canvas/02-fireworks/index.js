@@ -74,6 +74,13 @@ class Canvas extends CanvasOption {
         tail.update()
         tail.draw()
 
+        for (let i = 0; i < Math.round(-tail.vy * 0.5); i++) {
+          const vx = randomNumBetween(-5, 5) * 0.05
+          const vy = randomNumBetween(-5, 5) * 0.05
+          const opacity = Math.min(-tail.vy, 0.55)
+          this.sparks.push(new Spark(tail.x, tail.y, vx, vy, opacity, tail.colorDeg))
+        }
+
         if (tail.vy > -1) {
           this.tails.splice(index, 1)
           this.createParticles(tail.x, tail.y, tail.colorDeg)
@@ -85,7 +92,7 @@ class Canvas extends CanvasOption {
         particle.draw()
 
         if (Math.random() < 0.1) {
-          this.sparks.push(new Spark(particle.x, particle.y, 0.35))
+          this.sparks.push(new Spark(particle.x, particle.y, 0, 0, 0.35, 45))
         }
 
         if (particle.opacity < 0) this.particles.splice(index, 1)
