@@ -27,7 +27,7 @@ export default class Particle {
   }
   draw(ctx) {
     ctx.beginPath()
-    ctx.arc(this.x, this.y, 1, 0, Math.PI * 2)
+    ctx.arc(this.x, this.y, 1.2, 0, Math.PI * 2)
     ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`
     ctx.fill()
     ctx.closePath()
