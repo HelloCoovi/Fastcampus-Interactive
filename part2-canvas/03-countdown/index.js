@@ -1,3 +1,5 @@
+import Particle from "./js/Particle.js"
+
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 const dpr = window.devicePixelRatio
@@ -5,6 +7,7 @@ const interval = 1000 / 60
 let canvasWidth = window.innerWidth
 let canvasHeight = window.innerHeight
 
+const particles = []
 
 function init() {
   canvasWidth = window.innerWidth
@@ -16,6 +19,14 @@ function init() {
   ctx.scale(dpr, dpr)
 }
 
+function createRing() {
+  const PARTICLE_NUM = 1
+
+  for (let i = 0; i < PARTICLE_NUM; i++) {
+    particles.push(new Particle())
+  }
+}
+
 function render() {
   let now, delta
   let then = Date.now()
@@ -25,6 +36,11 @@ function render() {
     now = Date.now()
     delta = now - then
     if (delta < interval) return
+
+    particles.forEach((particle, index) => {
+      particle.update()
+      particle.draw(ctx)
+    })
 
     then = now - (delta % interval)
   }
@@ -38,4 +54,9 @@ window.addEventListener("load", () => {
 
 window.addEventListener("resize", () => {
   init()
+})
+
+// 🩺 테스트 코드
+window.addEventListener("click", () => {
+  createRing()
 })
