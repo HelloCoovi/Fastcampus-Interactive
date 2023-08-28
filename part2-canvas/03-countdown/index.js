@@ -42,6 +42,8 @@ function render() {
     particles.forEach((particle, index) => {
       particle.update()
       particle.draw(ctx)
+
+      if (particle.opacity < 0) particles.splice(index, 1)
     })
 
     then = now - (delta % interval)
