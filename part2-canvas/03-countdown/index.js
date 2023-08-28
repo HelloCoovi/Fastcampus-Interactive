@@ -37,6 +37,8 @@ function render() {
     delta = now - then
     if (delta < interval) return
 
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight)
+
     particles.forEach((particle, index) => {
       particle.update()
       particle.draw(ctx)

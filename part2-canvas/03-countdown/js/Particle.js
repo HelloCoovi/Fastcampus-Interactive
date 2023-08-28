@@ -5,11 +5,18 @@ export default class Particle {
     this.r = innerHeight / 4
     this.angle = randomNumBetween(0, 360)
 
+    this.rAlpha = randomNumBetween(0, 5)
+    this.angleAlpha = randomNumBetween(1, 2)
 
+    this.rFriction = randomNumBetween(0.95, 1.01)
+    this.angleFriction = randomNumBetween(0.95, 0.99)
   }
   update() {
-    this.r += 1
-    this.angle += 1
+    this.rAlpha *= this.rFriction
+    this.angleAlpha *= this.angleFriction
+
+    this.r += this.rAlpha
+    this.angle += this.angleAlpha
 
     this.x = window.innerWidth / 2 + this.r * Math.cos(Math.PI / 180 * this.angle)
     this.y = window.innerHeight / 2 + this.r * Math.sin(Math.PI / 180 * this.angle)
