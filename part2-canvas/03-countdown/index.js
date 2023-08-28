@@ -39,12 +39,19 @@ function render() {
 
     ctx.clearRect(0, 0, canvasWidth, canvasHeight)
 
-    particles.forEach((particle, index) => {
-      particle.update()
-      particle.draw(ctx)
+    for (let i = particles.length - 1; i >= 0; i--) {
+      particles[i].update()
+      particles[i].draw(ctx)
 
-      if (particle.opacity < 0) particles.splice(index, 1)
-    })
+      if (particles[i].opacity < 0) particles.splice(i, 1)
+    }
+
+    // particles.forEach((particle, index) => {
+    //   particle.update()
+    //   particle.draw(ctx)
+
+    //   if (particle.opacity < 0) particles.splice(index, 1)
+    // })
 
     then = now - (delta % interval)
   }
