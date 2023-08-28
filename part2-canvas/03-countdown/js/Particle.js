@@ -5,10 +5,14 @@ export default class Particle {
     this.r = innerHeight / 4
     this.angle = randomNumBetween(0, 360)
 
-    this.x = window.innerWidth / 2 + this.r * Math.cos(Math.PI / 180 * this.angle)
-    this.y = window.innerHeight / 2 + this.r * Math.sin(Math.PI / 180 * this.angle)
+
   }
   update() {
+    this.r += 1
+    this.angle += 1
+
+    this.x = window.innerWidth / 2 + this.r * Math.cos(Math.PI / 180 * this.angle)
+    this.y = window.innerHeight / 2 + this.r * Math.sin(Math.PI / 180 * this.angle)
   }
   draw(ctx) {
     ctx.beginPath()
