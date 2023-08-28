@@ -16,3 +16,18 @@ body {
   width: 50vh;
   height: 50vh;
 }
+
+#countdown {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+#countdown > span {
+  position: absolute;
+  font-size: 7rem;
+  opacity: 0;
+  transform: scale(5);
+}
