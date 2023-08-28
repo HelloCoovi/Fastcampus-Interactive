@@ -5,4 +5,14 @@ body {
   height: 100%;
   overflow: hidden;
   background-color: #000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#ring {
+  position: absolute;
+  width: 50vh;
+  height: 50vh;
 }
