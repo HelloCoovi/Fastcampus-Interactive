@@ -24,14 +24,19 @@ function render() {
   const width = 50
   const height = 50
 
+  let widthAlpha = 0
+
   const frame = () => {
     requestAnimationFrame(frame)
     now = Date.now()
     delta = now - then
     if (delta < interval) return
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight)
+
+    widthAlpha += 0.1
 
     ctx.fillStyle = "red"
-    ctx.fillRect(x, y, width, height)
+    ctx.fillRect(x, y, width * Math.cos(widthAlpha), height * Math.sin(widthAlpha))
 
     then = now - (delta % interval)
   }
