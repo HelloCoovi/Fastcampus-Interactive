@@ -1,7 +1,7 @@
 import { randomNumBetween } from "./utils.js"
 
 export default class Particle {
-  constructor(x, y, deg = -50) {
+  constructor(x, y, deg = 0) {
     this.x = x
     this.y = y
 

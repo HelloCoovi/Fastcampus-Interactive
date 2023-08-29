@@ -17,18 +17,12 @@ function init() {
   canvas.width = canvasWidth * dpr
   canvas.height = canvasHeight * dpr
   ctx.scale(dpr, dpr)
-
-  confetti({
-    x: canvasWidth / 2,
-    y: canvasHeight / 2,
-    count: 10
-  })
 }
 
 
-function confetti({ x, y, count }) {
+function confetti({ x, y, count, deg }) {
   for (let i = 0; i < count; i++) {
-    particles.push(new Particle(x, y))
+    particles.push(new Particle(x, y, deg))
   }
 }
 
@@ -66,8 +60,9 @@ window.addEventListener("resize", () => {
 // 🩺 테스트 코드
 window.addEventListener("click", () => {
   confetti({
-    x: canvasWidth / 2,
+    x: 0,
     y: canvasHeight / 2,
-    count: 10
+    count: 10,
+    deg: -50
   })
 })
