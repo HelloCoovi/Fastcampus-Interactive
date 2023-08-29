@@ -20,11 +20,12 @@ function render() {
   let then = Date.now()
 
   const x = window.innerWidth / 2
-  const y = window.innerHeight / 2
+  let y = window.innerHeight / 2
   const width = 50
   const height = 50
 
   let widthAlpha = 0
+  let deg = 0.1
 
   const frame = () => {
     requestAnimationFrame(frame)
@@ -34,9 +35,18 @@ function render() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight)
 
     widthAlpha += 0.1
+    deg += 0.1
+    y += 1
+
+    ctx.translate(x + width, y + height)
+    ctx.rotate(deg)
+    ctx.translate(-x - width, -y - height)
 
     ctx.fillStyle = "red"
     ctx.fillRect(x, y, width * Math.cos(widthAlpha), height * Math.sin(widthAlpha))
+
+    // ctx의 rotate같은 transform 값은 누적되므로 초기화 해줘야함
+    ctx.resetTransform()
 
     then = now - (delta % interval)
   }
