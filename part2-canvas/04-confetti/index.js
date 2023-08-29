@@ -19,6 +19,11 @@ function render() {
   let now, delta
   let then = Date.now()
 
+  const x = window.innerWidth / 2
+  const y = window.innerHeight / 2
+  const width = 50
+  const height = 50
+
   const frame = () => {
     requestAnimationFrame(frame)
     now = Date.now()
@@ -26,7 +31,7 @@ function render() {
     if (delta < interval) return
 
     ctx.fillStyle = "red"
-    ctx.fillRect(200, 200, 50, 50)
+    ctx.fillRect(x, y, width, height)
 
     then = now - (delta % interval)
   }
