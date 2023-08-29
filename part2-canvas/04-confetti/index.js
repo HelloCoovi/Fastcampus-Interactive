@@ -1,9 +1,13 @@
+import Particle from "./js/Particle.js"
+
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 const dpr = window.devicePixelRatio > 1 ? 2 : 1
 const interval = 1000 / 60
 let canvasWidth = window.innerWidth
 let canvasHeight = window.innerHeight
+
+const particles = []
 
 function init() {
   canvasWidth = window.innerWidth
@@ -13,19 +17,25 @@ function init() {
   canvas.width = canvasWidth * dpr
   canvas.height = canvasHeight * dpr
   ctx.scale(dpr, dpr)
+
+  confetti({
+    x: canvasWidth / 2,
+    y: canvasHeight / 2,
+    count: 10
+  })
 }
+
+
+function confetti({ x, y, count }) {
+  for (let i = 0; i < count; i++) {
+    particles.push(new Particle(x, y))
+  }
+}
+
 
 function render() {
   let now, delta
   let then = Date.now()
-
-  const x = window.innerWidth / 2
-  let y = window.innerHeight / 2
-  const width = 50
-  const height = 50
-
-  let widthAlpha = 0
-  let deg = 0.1
 
   const frame = () => {
     requestAnimationFrame(frame)
@@ -34,19 +44,10 @@ function render() {
     if (delta < interval) return
     ctx.clearRect(0, 0, canvasWidth, canvasHeight)
 
-    widthAlpha += 0.1
-    deg += 0.1
-    y += 1
-
-    ctx.translate(x + width, y + height)
-    ctx.rotate(deg)
-    ctx.translate(-x - width, -y - height)
-
-    ctx.fillStyle = "red"
-    ctx.fillRect(x, y, width * Math.cos(widthAlpha), height * Math.sin(widthAlpha))
-
-    // ctx의 rotate같은 transform 값은 누적되므로 초기화 해줘야함
-    ctx.resetTransform()
+    for (let i = particles.length - 1; i >= 0; i--) {
+      particles[i].update()
+      particles[i].draw(ctx)
+    }
 
     then = now - (delta % interval)
   }
