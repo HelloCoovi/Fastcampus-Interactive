@@ -62,3 +62,12 @@ window.addEventListener("load", () => {
 window.addEventListener("resize", () => {
   init()
 })
+
+// 🩺 테스트 코드
+window.addEventListener("click", () => {
+  confetti({
+    x: canvasWidth / 2,
+    y: canvasHeight / 2,
+    count: 10
+  })
+})
