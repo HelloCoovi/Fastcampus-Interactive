@@ -40,16 +40,10 @@ function render() {
 
 
     confetti({
-      x: 0, // 0 ~ 1
-      y: 0, // 0 ~ 1
-      count: 10,
-      deg: 45,
-    })
-    confetti({
-      x: 1, // 0 ~ 1
-      y: 0, // 0 ~ 1
-      count: 10,
-      deg: 135,
+      x: 0.5, // 0 ~ 1
+      y: 0.5, // 0 ~ 1
+      count: 5,
+      deg: 270,
     })
 
 
