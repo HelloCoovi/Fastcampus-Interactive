@@ -20,9 +20,9 @@ function init() {
 }
 
 
-function confetti({ x, y, count, deg, colors, shapes }) {
+function confetti({ x, y, count, deg, colors, shapes, spread }) {
   for (let i = 0; i < count; i++) {
-    particles.push(new Particle(x, y, deg, colors, shapes))
+    particles.push(new Particle(x, y, deg, colors, shapes, spread))
   }
 }
 
@@ -45,8 +45,6 @@ function render() {
       if (particles[i].opacity <= 0) particles.splice(i, 1)
     }
 
-
-
     then = now - (delta % interval)
   }
   requestAnimationFrame(frame)
@@ -68,6 +66,8 @@ window.addEventListener("click", () => {
     y: 0.5, // 0 ~ 1
     count: 10,
     deg: -50,
-    // colors: ["#FF0000"]
+    // colors: ["#FF0000"],
+    // spread: ["circle", "square"]
+    spread: 1
   })
 })
