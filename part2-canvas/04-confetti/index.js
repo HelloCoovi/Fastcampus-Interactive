@@ -44,6 +44,7 @@ function render() {
       y: 0.5, // 0 ~ 1
       count: 5,
       deg: 270,
+      spread: 180
     })
 
 
