@@ -7,7 +7,7 @@ const interval = 1000 / 60
 let canvasWidth = window.innerWidth
 let canvasHeight = window.innerHeight
 
-const particles = []
+let particles = []
 
 function init() {
   canvasWidth = window.innerWidth
@@ -66,12 +66,19 @@ function render() {
     })
 
 
-    for (let i = particles.length - 1; i >= 0; i--) {
-      particles[i].update()
-      particles[i].draw(ctx)
-
-      if (particles[i].opacity <= 0) particles.splice(i, 1)
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw(ctx);
     }
+
+    particles = particles.filter(function (particle) {
+      return particle.opacity > 0 &&
+        particle.y <= canvasHeight &&
+        particle.x <= canvasWidth &&
+        particle.x >= 0;
+    });
+
+
 
     then = now - (delta % interval)
   }
