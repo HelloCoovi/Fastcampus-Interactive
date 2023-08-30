@@ -20,9 +20,9 @@ function init() {
 }
 
 
-function confetti({ x, y, count, deg }) {
+function confetti({ x, y, count, deg, colors }) {
   for (let i = 0; i < count; i++) {
-    particles.push(new Particle(x, y, deg))
+    particles.push(new Particle(x, y, deg, colors))
   }
 }
 
@@ -67,6 +67,7 @@ window.addEventListener("click", () => {
     x: 0,
     y: canvasHeight / 2,
     count: 10,
-    deg: -50
+    deg: -50,
+    colors: ["#FF0000"]
   })
 })

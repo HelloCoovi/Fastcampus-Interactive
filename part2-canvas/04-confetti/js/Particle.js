@@ -1,7 +1,7 @@
-import { randomNumBetween } from "./utils.js"
+import { randomNumBetween, hexToRgb } from "./utils.js"
 
 export default class Particle {
-  constructor(x, y, deg = 0) {
+  constructor(x, y, deg = 0, colors) {
     this.x = x
     this.y = y
 
@@ -23,6 +23,11 @@ export default class Particle {
 
     this.rotation = randomNumBetween(0, 360)
     this.rotationDelta = randomNumBetween(-1, 1)
+
+    this.colors = colors || ['#FF577F', '#FF884B', '#FFD384', '#FFF9B0']
+    this.color = hexToRgb(
+      this.colors[Math.floor(randomNumBetween(0, this.colors.length - 1))]
+    )
   }
   update() {
     this.vy += this.gravity
@@ -45,7 +50,7 @@ export default class Particle {
     ctx.rotate(Math.PI / 180 * this.rotation)
     ctx.translate(-this.x - this.width * 1.2, -this.y - this.height * 1.2)
 
-    ctx.fillStyle = `rgba(255, 0, 0, ${this.opacity})`
+    ctx.fillStyle = `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${this.opacity})`
     ctx.fillRect(
       this.x,
       this.y,
