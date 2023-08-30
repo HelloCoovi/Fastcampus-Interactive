@@ -64,8 +64,8 @@ window.addEventListener("resize", () => {
 // 🩺 테스트 코드
 window.addEventListener("click", () => {
   confetti({
-    x: 0,
-    y: canvasHeight / 2,
+    x: 0, // 0 ~ 1
+    y: 0.5, // 0 ~ 1
     count: 10,
     deg: -50,
     colors: ["#FF0000"]

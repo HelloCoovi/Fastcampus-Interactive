@@ -2,8 +2,8 @@ import { randomNumBetween, hexToRgb } from "./utils.js"
 
 export default class Particle {
   constructor(x, y, deg = 0, colors) {
-    this.x = x
-    this.y = y
+    this.x = x * innerWidth
+    this.y = y * innerHeight
 
     this.width = 12
     this.height = 12
