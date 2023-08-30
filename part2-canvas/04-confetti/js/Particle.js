@@ -5,8 +5,8 @@ export default class Particle {
     this.x = x
     this.y = y
 
-    this.width = 30
-    this.height = 30
+    this.width = 12
+    this.height = 12
 
     this.r = randomNumBetween(30, 100)
     this.angle = Math.PI / 180 * randomNumBetween(deg - 30, deg + 30)
@@ -17,6 +17,12 @@ export default class Particle {
     this.gravity = 0.5
 
     this.opacity = 1
+
+    this.widthDelta = randomNumBetween(0, 360)
+    this.heightDelta = randomNumBetween(0, 360)
+
+    this.rotation = randomNumBetween(0, 360)
+    this.rotationDelta = randomNumBetween(-1, 1)
   }
   update() {
     this.vy += this.gravity
@@ -28,9 +34,25 @@ export default class Particle {
     this.y += this.vy
 
     this.opacity -= 0.005
+
+    this.widthDelta += 2
+    this.heightDelta += 2
+
+    this.rotation += this.rotationDelta
   }
   draw(ctx) {
+    ctx.translate(this.x + this.width * 1.2, this.y + this.height * 1.2)
+    ctx.rotate(Math.PI / 180 * this.rotation)
+    ctx.translate(-this.x - this.width * 1.2, -this.y - this.height * 1.2)
+
     ctx.fillStyle = `rgba(255, 0, 0, ${this.opacity})`
-    ctx.fillRect(this.x, this.y, this.width, this.height)
+    ctx.fillRect(
+      this.x,
+      this.y,
+      this.width * Math.cos(Math.PI / 180 * this.widthDelta),
+      this.height * Math.sin(Math.PI / 180 * this.heightDelta)
+    )
+
+    ctx.resetTransform()
   }
 }
