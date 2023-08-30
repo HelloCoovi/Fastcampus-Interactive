@@ -40,8 +40,8 @@ function render() {
 
 
     confetti({
-      x: 0.5, // 0 ~ 1
-      y: 0.5, // 0 ~ 1
+      x: Math.random(), // 0 ~ 1
+      y: Math.random(), // 0 ~ 1
       count: 5,
       deg: 270,
       spread: 180
