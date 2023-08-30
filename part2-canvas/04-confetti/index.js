@@ -31,6 +31,8 @@ function render() {
   let now, delta
   let then = Date.now()
 
+  let deg = 0
+
   const frame = () => {
     requestAnimationFrame(frame)
     now = Date.now()
@@ -39,12 +41,28 @@ function render() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight)
 
 
+    deg += 1
+
     confetti({
-      x: Math.random(), // 0 ~ 1
-      y: Math.random(), // 0 ~ 1
+      x: 0.5, // 0 ~ 1
+      y: 0.5, // 0 ~ 1
       count: 5,
-      deg: 270,
-      spread: 180
+      deg: 210 + deg,
+      spread: 1
+    })
+    confetti({
+      x: 0.5, // 0 ~ 1
+      y: 0.5, // 0 ~ 1
+      count: 5,
+      deg: 90 + deg,
+      spread: 1
+    })
+    confetti({
+      x: 0.5, // 0 ~ 1
+      y: 0.5, // 0 ~ 1
+      count: 5,
+      deg: 330 + deg,
+      spread: 1
     })
 
 
