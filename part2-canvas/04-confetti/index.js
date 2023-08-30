@@ -38,6 +38,24 @@ function render() {
     if (delta < interval) return
     ctx.clearRect(0, 0, canvasWidth, canvasHeight)
 
+
+    confetti({
+      x: 0, // 0 ~ 1
+      y: 0.5, // 0 ~ 1
+      count: 10,
+      deg: -50,
+      // colors: ["#FF0000"],
+      // spread: ["circle", "square"]
+      // spread: 1
+    })
+    confetti({
+      x: 1, // 0 ~ 1
+      y: 0.5, // 0 ~ 1
+      count: 10,
+      deg: -130,
+    })
+
+
     for (let i = particles.length - 1; i >= 0; i--) {
       particles[i].update()
       particles[i].draw(ctx)
@@ -59,15 +77,15 @@ window.addEventListener("resize", () => {
   init()
 })
 
-// 🩺 테스트 코드
-window.addEventListener("click", () => {
-  confetti({
-    x: 0, // 0 ~ 1
-    y: 0.5, // 0 ~ 1
-    count: 10,
-    deg: -50,
-    // colors: ["#FF0000"],
-    // spread: ["circle", "square"]
-    spread: 1
-  })
-})
+// // 🩺 테스트 코드
+// window.addEventListener("click", () => {
+//   confetti({
+//     x: 0, // 0 ~ 1
+//     y: 0.5, // 0 ~ 1
+//     count: 10,
+//     deg: -50,
+//     // colors: ["#FF0000"],
+//     // spread: ["circle", "square"]
+//     spread: 1
+//   })
+// })
