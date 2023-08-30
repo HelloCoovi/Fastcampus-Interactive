@@ -41,18 +41,15 @@ function render() {
 
     confetti({
       x: 0, // 0 ~ 1
-      y: 0.5, // 0 ~ 1
+      y: 0, // 0 ~ 1
       count: 10,
-      deg: -50,
-      // colors: ["#FF0000"],
-      // spread: ["circle", "square"]
-      // spread: 1
+      deg: 45,
     })
     confetti({
       x: 1, // 0 ~ 1
-      y: 0.5, // 0 ~ 1
+      y: 0, // 0 ~ 1
       count: 10,
-      deg: -130,
+      deg: 135,
     })
 
 
