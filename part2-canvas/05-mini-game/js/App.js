@@ -1,3 +1,5 @@
+import Background from "./Background.js"
+
 export default class App {
   static canvas = document.querySelector("canvas")
   static ctx = App.canvas.getContext("2d")
@@ -7,6 +9,8 @@ export default class App {
   static height = 768
 
   constructor() {
+    this.background = new Background()
+
     // 🎯 자동으로 실행되는 로직, bind로 this조정
     window.addEventListener("resize", this.resize.bind(this))
   }
@@ -37,6 +41,8 @@ export default class App {
 
       App.ctx.clearRect(0, 0, App.width, App.height)
       App.ctx.fillRect(50, 50, 100, 100)
+
+      this.background.draw()
 
 
       then = now - (delta % App.interval)
