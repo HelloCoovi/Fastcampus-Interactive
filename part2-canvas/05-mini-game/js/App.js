@@ -22,6 +22,25 @@ export default class App {
       window.innerWidth * 0.9
     App.canvas.style.width = width + "px"
     App.canvas.style.height = width * (3 / 4) + "px"
+  }
 
+  render() {
+    let now, delta
+    let then = Date.now()
+
+    const frame = () => {
+      requestAnimationFrame(frame)
+      now = Date.now()
+      delta = now - then
+      if (delta < App.interval) return
+
+
+      App.ctx.clearRect(0, 0, App.width, App.height)
+      App.ctx.fillRect(50, 50, 100, 100)
+
+
+      then = now - (delta % App.interval)
+    }
+    requestAnimationFrame(frame)
   }
 };
