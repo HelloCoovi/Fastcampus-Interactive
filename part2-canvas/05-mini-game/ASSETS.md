@@ -15,3 +15,9 @@ This project uses the following assets:
   - bg1.png
   - bg2.png
   - bg3.png
+
+## Images by [szadiart](https://szadiart.itch.io/platformer-fantasy-set1)
+
+- Description: Obstacle images
+- Modified: Yes
+  > "You can use this asset personally and commercially."
