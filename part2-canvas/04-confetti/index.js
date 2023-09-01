@@ -71,7 +71,7 @@ function render() {
       particles[i].draw(ctx);
     }
 
-    particles = particles.filter(function (particle) {
+    particles = particles.filter((particle) => {
       return particle.opacity > 0 &&
         particle.y <= canvasHeight &&
         particle.x <= canvasWidth &&
