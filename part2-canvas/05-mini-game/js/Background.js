@@ -3,6 +3,8 @@ import App from "./App.js";
 export default class Background {
   constructor() {
     this.img = document.querySelector("#bg1-img")
+    this.height = App.height
+    this.width = App.height * (this.img.width / this.img.height)
   }
 
   update() {
@@ -11,7 +13,7 @@ export default class Background {
   draw() {
     App.ctx.drawImage(
       this.img,
-      0, 0, this.img.width, this.img.height,
+      0, 0, this.width, this.height
     )
   }
 }
