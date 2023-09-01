@@ -1,13 +1,13 @@
 import App from "./App.js";
 
 export default class Background {
-  constructor() {
-    this.img = document.querySelector("#bg1-img")
+  constructor(config) {
+    this.img = config.img
     this.height = App.height
     this.width = App.height * (this.img.width / this.img.height)
     this.leftPos = { x: 0, y: 0 }
     this.rightPos = { x: this.width, y: 0 }
-    this.speed = 13
+    this.speed = config.speed
   }
 
   update() {
