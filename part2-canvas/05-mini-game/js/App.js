@@ -30,8 +30,8 @@ export default class App {
     const width = window.innerWidth > window.innerHeight ?
       window.innerHeight * 0.9 :
       window.innerWidth * 0.9
-    App.canvas.style.width = width + "px"
-    App.canvas.style.height = width * (3 / 4) + "px"
+    App.canvas.style.width = `${width}px`
+    App.canvas.style.height = `${width * (3 / 4)}px`
   }
 
   render() {
@@ -54,23 +54,21 @@ export default class App {
         background.draw()
       })
 
-      // 벽 애니메이션
-      for (let i = this.walls.length - 1; i >= 0; i--) {
-        this.walls[i].update()
-        this.walls[i].draw()
+      // 벽(장애물) 애니메이션
+      let newWall = []
 
-        // 벽 제거
-        if (this.walls[i].isOutside) {
-          this.walls.splice(i, 1)
-          continue
-        }
+      this.walls.forEach(wall => {
+        wall.update();
+        wall.draw();
 
         // 벽 생성
-        if (this.walls[i].canGenerateNext) {
-          this.walls[i].generatedNext = true
-          this.walls.push(new Wall({ type: Math.random() > 0.3 ? 'SMALL' : 'BIG' }))
+        if (wall.canGenerateNext) {
+          wall.generatedNext = true
+          newWall = [new Wall({ type: Math.random() > 0.3 ? 'SMALL' : 'BIG' })]
         }
-      }
+      })
+      // 새로운 벽이 생겼다면 this.walls와 병합
+      this.walls = this.walls.filter(wall => !wall.isOutside).concat(newWall)
 
 
       then = now - (delta % App.interval)
