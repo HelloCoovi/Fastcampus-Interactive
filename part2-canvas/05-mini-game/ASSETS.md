@@ -20,4 +20,12 @@ This project uses the following assets:
 
 - Description: Obstacle images
 - Modified: Yes
+- License
   > "You can use this asset personally and commercially."
+
+## Images by [bevouliin](https://bevouliin.com/purple-bug-game-asset-sprites/)
+
+- Description: Player character images
+- Modified: Yes
+- License
+  > "you can use it for personal and commercial purpose!"
