@@ -1,5 +1,6 @@
 import Background from "./Background.js"
 import Wall from "./Wall.js"
+import Player from "./Player.js"
 
 export default class App {
   static canvas = document.querySelector("canvas")
@@ -16,6 +17,8 @@ export default class App {
       new Background({ img: document.querySelector("#bg1-img"), speed: 4 })
     ]
     this.walls = [new Wall({ type: "SMALL" })]
+    this.player = new Player()
+
 
     // 🎯 자동으로 실행되는 로직, bind로 this조정
     window.addEventListener("resize", this.resize.bind(this))
@@ -69,6 +72,9 @@ export default class App {
       })
       // 새로운 벽이 생겼다면 this.walls와 병합
       this.walls = this.walls.filter(wall => !wall.isOutside).concat(newWall)
+
+      this.player.update()
+      this.player.draw()
 
 
       then = now - (delta % App.interval)
