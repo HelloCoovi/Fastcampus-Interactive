@@ -33,10 +33,20 @@ export default class Wall {
 
     // 구해진 y1 + 전체높이(요소 높이) + gap
     this.y2 = this.y1 + this.height + this.gapY
+
+    this.generatedNext = false
+    this.gapNextX = App.width * randomNumBetween(0.55, 0.65)
   }
 
   get isOutside() {
     return this.x + this.width < 0
+  }
+
+  get canGenerateNext() {
+    return (
+      !this.generatedNext &&
+      this.x + this.width < this.gapNextX
+    )
   }
 
   update() {

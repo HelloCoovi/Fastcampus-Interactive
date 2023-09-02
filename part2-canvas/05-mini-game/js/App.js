@@ -48,18 +48,27 @@ export default class App {
       App.ctx.clearRect(0, 0, App.width, App.height)
       App.ctx.fillRect(50, 50, 100, 100)
 
+      // 배경 애니메이션
       this.backgrounds.forEach(background => {
         background.update()
         background.draw()
       })
 
+      // 벽 애니메이션
       for (let i = this.walls.length - 1; i >= 0; i--) {
-        this.walls[i].update();
-        this.walls[i].draw();
+        this.walls[i].update()
+        this.walls[i].draw()
 
+        // 벽 제거
         if (this.walls[i].isOutside) {
           this.walls.splice(i, 1)
           continue
+        }
+
+        // 벽 생성
+        if (this.walls[i].canGenerateNext) {
+          this.walls[i].generatedNext = true
+          this.walls.push(new Wall({ type: Math.random() > 0.3 ? 'SMALL' : 'BIG' }))
         }
       }
 
