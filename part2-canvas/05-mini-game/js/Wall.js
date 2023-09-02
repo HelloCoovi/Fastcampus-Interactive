@@ -24,7 +24,7 @@ export default class Wall {
     this.gapY = randomNumBetween(App.height * 0.2, App.height * 0.35)
     // this.gapY = App.height * 0.5
 
-    this.x = 0
+    this.x = App.width
 
     // 전체높이까지 + (30 ~ (전체높이 - 사이값 - 30))
     // 최소한 gapY만큼의 공간을 확보하고(App.height - this.gapY) 나머지는 랜덤으로 지정
@@ -35,7 +35,12 @@ export default class Wall {
     this.y2 = this.y1 + this.height + this.gapY
   }
 
+  get isOutside() {
+    return this.x + this.width < 0
+  }
+
   update() {
+    this.x += -6
   }
   draw() {
     App.ctx.drawImage(

@@ -56,6 +56,8 @@ export default class App {
       this.walls.forEach(wall => {
         wall.update()
         wall.draw()
+
+        console.log(wall.isOutside)
       })
 
 
