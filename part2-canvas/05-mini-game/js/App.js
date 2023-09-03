@@ -78,7 +78,8 @@ export default class App {
       this.walls = this.walls.filter(wall => !wall.isOutside).concat(newWall)
 
       // 플레이어 애니메이션
-      this.player.update()
+      // 🩺바운딩 박스를 위한 임시 주석
+      // this.player.update()
       this.player.draw()
 
 

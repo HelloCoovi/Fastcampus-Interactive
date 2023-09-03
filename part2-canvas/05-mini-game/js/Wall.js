@@ -38,8 +38,21 @@ export default class Wall {
     this.generatedNext = false
     this.gapNextX = App.width * randomNumBetween(0.55, 0.65)
 
-    this.boundingBox1 = new BoundingBox(this.x, this.y1, this.width, this.height)
-    this.boundingBox2 = new BoundingBox(this.x, this.y2, this.width, this.height)
+    this.boundingBoxOffset = 30;
+    this.boundingBoxAdjust = 60;
+
+    this.boundingBox1 = new BoundingBox(
+      this.x + this.boundingBoxOffset,
+      this.y1 + this.boundingBoxOffset,
+      this.width - this.boundingBoxAdjust,
+      this.height - this.boundingBoxAdjust
+    )
+    this.boundingBox2 = new BoundingBox(
+      this.x + this.boundingBoxOffset,
+      this.y2 + this.boundingBoxOffset,
+      this.width - this.boundingBoxAdjust,
+      this.height - this.boundingBoxAdjust
+    )
   }
 
   get isOutside() {
@@ -63,10 +76,15 @@ export default class Wall {
   update() {
     this.x += -6
 
-    this.boundingBox1.x = this.x
-    this.boundingBox2.x = this.x
+    this.boundingBox1.x = this.x + this.boundingBoxOffset
+    this.boundingBox2.x = this.x + this.boundingBoxOffset
   }
   draw() {
+    // 🩺 테스트 코드
+    // this.x = App.width * 0.6
+    // this.boundingBox1.x = this.x + this.boundingBoxOffset
+    // this.boundingBox2.x = this.x + this.boundingBoxOffset
+
     App.ctx.drawImage(
       this.img,
       // 이미지 자르기 옵션
@@ -79,8 +97,8 @@ export default class Wall {
       this.sx, 0, this.sizeX * this.img.width, this.img.height,
       this.x, this.y2, this.width, this.height
     )
-    this.boundingBox1.draw()
-    this.boundingBox2.draw()
 
+    this.boundingBox1.draw() + this.boundingBoxOffset
+    this.boundingBox2.draw() + this.boundingBoxOffset
   }
 }
