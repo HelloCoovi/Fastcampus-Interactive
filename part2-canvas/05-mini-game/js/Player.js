@@ -10,9 +10,14 @@ export default class Player {
     // 원본이미지 크기: 3990 x 207 (3990 / 15 == 266)
     this.height = this.width * (207 / 266)
 
+    this.counter = 0
     this.frameX = 0
   }
   update() {
+    if (++this.counter % 2 === 0) {
+      this.frameX = ++this.frameX % 15
+    }
+
   }
   draw() {
     App.ctx.drawImage(
