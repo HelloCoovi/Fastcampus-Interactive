@@ -69,17 +69,21 @@ export default class App {
           wall.generatedNext = true
           newWall = [new Wall({ type: Math.random() > 0.3 ? 'SMALL' : 'BIG' })]
         }
-
-        if (wall.isColliding(this.player.boundingBox)) {
-          console.log("충돌이다아아아아ㅏ")
-        }
       })
       // 새로운 벽이 생겼다면 this.walls와 병합
       this.walls = this.walls.filter(wall => !wall.isOutside).concat(newWall)
 
+      const isCollidingAnyWall = this.walls.some(wall => wall.isColliding(this.player.boundingBox));
+
+      if (isCollidingAnyWall) {
+        this.player.boundingBox.color = `rgba(255, 0, 0, 0.3)`
+      } else {
+        this.player.boundingBox.color = `rgba(0, 0, 255, 0.3)`
+      }
+
       // 플레이어 애니메이션
       // 🩺바운딩 박스를 위한 임시 주석
-      // this.player.update()
+      this.player.update()
       this.player.draw()
 
 
