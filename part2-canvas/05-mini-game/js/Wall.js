@@ -1,4 +1,5 @@
 import App from "./App.js"
+import BoundingBox from "./BoundingBox.js"
 import { randomNumBetween } from "./utils.js"
 
 export default class Wall {
@@ -36,6 +37,9 @@ export default class Wall {
 
     this.generatedNext = false
     this.gapNextX = App.width * randomNumBetween(0.55, 0.65)
+
+    this.boundingBox1 = new BoundingBox(this.x, this.y1, this.width, this.height)
+    this.boundingBox2 = new BoundingBox(this.x, this.y2, this.width, this.height)
   }
 
   get isOutside() {
@@ -51,6 +55,9 @@ export default class Wall {
 
   update() {
     this.x += -6
+
+    this.boundingBox1.x = this.x
+    this.boundingBox2.x = this.x
   }
   draw() {
     App.ctx.drawImage(
@@ -65,5 +72,8 @@ export default class Wall {
       this.sx, 0, this.sizeX * this.img.width, this.img.height,
       this.x, this.y2, this.width, this.height
     )
+    this.boundingBox1.draw()
+    this.boundingBox2.draw()
+
   }
 }
