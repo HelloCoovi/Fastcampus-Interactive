@@ -53,6 +53,13 @@ export default class Wall {
     )
   }
 
+  isColliding(target) {
+    return (
+      this.boundingBox1.isColliding(target) ||
+      this.boundingBox2.isColliding(target)
+    )
+  }
+
   update() {
     this.x += -6
 

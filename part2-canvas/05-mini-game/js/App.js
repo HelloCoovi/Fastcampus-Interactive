@@ -69,10 +69,15 @@ export default class App {
           wall.generatedNext = true
           newWall = [new Wall({ type: Math.random() > 0.3 ? 'SMALL' : 'BIG' })]
         }
+
+        if (wall.isColliding(this.player.boundingBox)) {
+          console.log("충돌이다아아아아ㅏ")
+        }
       })
       // 새로운 벽이 생겼다면 this.walls와 병합
       this.walls = this.walls.filter(wall => !wall.isOutside).concat(newWall)
 
+      // 플레이어 애니메이션
       this.player.update()
       this.player.draw()
 
