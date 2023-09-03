@@ -20,7 +20,18 @@ export default class Player {
       this.vy = -5
     })
 
-    this.boundingBox = new BoundingBox(this.x, this.y, this.width, this.height)
+    this.BoundingBoxAdjust = {
+      x: 10,
+      y: 16,
+      width: -20,
+      height: -20
+    }
+    this.boundingBox = new BoundingBox(
+      this.x + this.BoundingBoxAdjust.x,
+      this.y + this.BoundingBoxAdjust.y,
+      this.width + this.BoundingBoxAdjust.width,
+      this.height + this.BoundingBoxAdjust.height
+    )
   }
   update() {
     if (++this.counter % 2 === 0) {
@@ -30,7 +41,7 @@ export default class Player {
     this.vy += this.gravity
     this.y += this.vy
 
-    this.boundingBox.y = this.y
+    this.boundingBox.y = this.y + this.BoundingBoxAdjust.y
   }
   draw() {
     App.ctx.drawImage(
