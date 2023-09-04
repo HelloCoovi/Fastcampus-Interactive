@@ -20,7 +20,7 @@ export default class App {
     this.walls = [new Wall({ type: "SMALL" })]
     this.player = new Player()
     this.coins = [
-      new Coin()
+      new Coin(App.width * 0.5, App.height * 0.5)
     ]
 
 
