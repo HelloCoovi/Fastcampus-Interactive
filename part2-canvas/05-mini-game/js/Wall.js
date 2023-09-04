@@ -81,9 +81,9 @@ export default class Wall {
   }
   draw() {
     // 🩺 테스트 코드
-    // this.x = App.width * 0.6
-    // this.boundingBox1.x = this.x + this.boundingBoxOffset
-    // this.boundingBox2.x = this.x + this.boundingBoxOffset
+    this.x = App.width * 0.6
+    this.boundingBox1.x = this.x + this.boundingBoxOffset
+    this.boundingBox2.x = this.x + this.boundingBoxOffset
 
     App.ctx.drawImage(
       this.img,
