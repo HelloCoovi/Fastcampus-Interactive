@@ -1,6 +1,7 @@
 import Background from "./Background.js"
 import Wall from "./Wall.js"
 import Player from "./Player.js"
+import Coin from "./Coin.js"
 
 export default class App {
   static canvas = document.querySelector("canvas")
@@ -18,6 +19,9 @@ export default class App {
     ]
     this.walls = [new Wall({ type: "SMALL" })]
     this.player = new Player()
+    this.coins = [
+      new Coin()
+    ]
 
 
     // 🎯 자동으로 실행되는 로직, bind로 this조정
@@ -82,9 +86,14 @@ export default class App {
       }
 
       // 플레이어 애니메이션
-      // 🩺바운딩 박스를 위한 임시 주석
       this.player.update()
       this.player.draw()
+
+      // 코인 애니메이션
+      this.coins.forEach((coin) => {
+        coin.update()
+        coin.draw()
+      })
 
 
       then = now - (delta % App.interval)
