@@ -103,6 +103,13 @@ export default class App {
         coin.draw()
       })
 
+      const isCollidingAnyCoin = this.coins.some(coin => coin.boundingBox.isColliding(this.player.boundingBox));
+
+      if (isCollidingAnyCoin) {
+        console.log("코인 먹었음!")
+        this.coins = this.coins.filter(coin => !coin.boundingBox.isColliding(this.player.boundingBox));
+      }
+
 
       then = now - (delta % App.interval)
     }
