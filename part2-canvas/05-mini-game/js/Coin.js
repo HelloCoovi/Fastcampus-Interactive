@@ -40,6 +40,6 @@ export default class Coin {
       this.x, this.y, this.width, this.height
     )
 
-    this.boundingBox.draw()
+    // this.boundingBox.draw()
   }
 }

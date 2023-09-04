@@ -100,7 +100,7 @@ export default class Wall {
       this.x, this.y2, this.width, this.height
     )
 
-    this.boundingBox1.draw() + this.boundingBoxOffset
-    this.boundingBox2.draw() + this.boundingBoxOffset
+    // this.boundingBox1.draw() + this.boundingBoxOffset
+    // this.boundingBox2.draw() + this.boundingBoxOffset
   }
 }
