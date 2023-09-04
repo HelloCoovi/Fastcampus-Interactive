@@ -2,6 +2,7 @@ import Background from "./Background.js"
 import Wall from "./Wall.js"
 import Player from "./Player.js"
 import Coin from "./Coin.js"
+import Score from "./Score.js"
 
 export default class App {
   static canvas = document.querySelector("canvas")
@@ -20,6 +21,7 @@ export default class App {
     this.walls = [new Wall({ type: "SMALL" })]
     this.player = new Player()
     this.coins = []
+    this.score = new Score()
 
 
     // 🎯 자동으로 실행되는 로직, bind로 this조정
@@ -108,6 +110,10 @@ export default class App {
       if (isCollidingAnyCoin) {
         this.coins = this.coins.filter(coin => !coin.boundingBox.isColliding(this.player.boundingBox));
       }
+
+      // 점수관련 로직
+      this.score.update()
+      this.score.draw()
 
 
       then = now - (delta % App.interval)
