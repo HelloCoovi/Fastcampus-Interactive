@@ -29,3 +29,10 @@ This project uses the following assets:
 - Modified: Yes
 - License
   > "you can use it for personal and commercial purpose!"
+
+## Images by [Flixberry Entertainment](https://opengameart.org/content/coin-animation)
+
+- Description: Coin images
+- Modified: Yes
+- License
+  > "no need to credit, if you like credit Flixberry Entertainment"
