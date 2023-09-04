@@ -1,7 +1,7 @@
 import App from "./App.js"
 
 export default class Coin {
-  constructor(x, y) {
+  constructor(x, y, vx) {
     this.img = document.querySelector("#coin-img")
 
     this.x = x
@@ -11,13 +11,22 @@ export default class Coin {
 
     this.counter = 0
     this.frameX = 0
+
+    this.vx = vx
   }
+
+  get isOutside() {
+    return this.x + this.width < 0
+  }
+
   update() {
     if (++this.counter % 6 === 0) {
       this.counter = 0
       this.frameX += 1
       if (this.frameX >= 6) this.frameX = 0
     }
+
+    this.x += this.vx
 
   }
   draw() {

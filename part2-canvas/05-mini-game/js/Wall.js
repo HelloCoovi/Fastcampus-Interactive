@@ -53,6 +53,8 @@ export default class Wall {
       this.width - this.boundingBoxAdjust,
       this.height - this.boundingBoxAdjust
     )
+
+    this.vx = -6
   }
 
   get isOutside() {
@@ -74,16 +76,16 @@ export default class Wall {
   }
 
   update() {
-    this.x += -6
+    this.x += this.vx
 
     this.boundingBox1.x = this.x + this.boundingBoxOffset
     this.boundingBox2.x = this.x + this.boundingBoxOffset
   }
   draw() {
     // 🩺 테스트 코드
-    this.x = App.width * 0.6
-    this.boundingBox1.x = this.x + this.boundingBoxOffset
-    this.boundingBox2.x = this.x + this.boundingBoxOffset
+    // this.x = App.width * 0.6
+    // this.boundingBox1.x = this.x + this.boundingBoxOffset
+    // this.boundingBox2.x = this.x + this.boundingBoxOffset
 
     App.ctx.drawImage(
       this.img,

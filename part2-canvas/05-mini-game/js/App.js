@@ -19,12 +19,7 @@ export default class App {
     ]
     this.walls = [new Wall({ type: "SMALL" })]
     this.player = new Player()
-    this.coins = [
-      new Coin(
-        App.width * 0.6 + this.walls[0].width / 2,
-        this.walls[0].y2 - this.walls[0].gapY / 2
-      )
-    ]
+    this.coins = []
 
 
     // 🎯 자동으로 실행되는 로직, bind로 this조정
@@ -75,10 +70,20 @@ export default class App {
         if (wall.canGenerateNext) {
           wall.generatedNext = true
           newWall = [new Wall({ type: Math.random() > 0.3 ? 'SMALL' : 'BIG' })]
+
+          // 코인 생성 로직
+          if (Math.random() < 0.5) {
+            const x = newWall[0].x + newWall[0].width / 2
+            const y = newWall[0].y2 - newWall[0].gapY / 2
+            const vx = newWall[0].vx
+            this.coins.push(new Coin(x, y, vx))
+          }
         }
       })
-      // 새로운 벽이 생겼다면 this.walls와 병합
+      // isOutside로 화면에서 나간 요소를 제외한 배열 생성 + 새로운 벽이 생겼다면 this.walls와 병합
       this.walls = this.walls.filter(wall => !wall.isOutside).concat(newWall)
+      // isOutside로 화면에서 벗어난 요소 삭제
+      this.coins = this.coins.filter(coin => !coin.isOutside)
 
       const isCollidingAnyWall = this.walls.some(wall => wall.isColliding(this.player.boundingBox));
 
