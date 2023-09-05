@@ -55,7 +55,7 @@ canvas {
   cursor: pointer;
   left: 50vw;
   bottom: 30vh;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0);
 }
 .btn-shape {
   fill: white;
