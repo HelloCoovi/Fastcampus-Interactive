@@ -11,6 +11,7 @@ export default class Score {
 
   }
   update() {
+    this.distCount += 0.015
 
   }
   draw() {
@@ -22,6 +23,6 @@ export default class Score {
     App.ctx.fillText(this.coinCount, App.width - 90, 69)
 
     App.ctx.textAlign = "left"
-    App.ctx.fillText(`${this.distCount}m`, 25, 69)
+    App.ctx.fillText(`${this.distCount.toFixed(1)}m`, 25, 69)
   }
 }

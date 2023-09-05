@@ -109,6 +109,7 @@ export default class App {
 
       if (isCollidingAnyCoin) {
         this.coins = this.coins.filter(coin => !coin.boundingBox.isColliding(this.player.boundingBox));
+        this.score.coinCount++
       }
 
       // 점수관련 로직
