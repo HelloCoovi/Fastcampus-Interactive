@@ -3,6 +3,7 @@ import Wall from "./Wall.js"
 import Player from "./Player.js"
 import Coin from "./Coin.js"
 import Score from "./Score.js"
+import GameHandler from "./GameHandler.js"
 
 export default class App {
   static canvas = document.querySelector("canvas")
@@ -22,6 +23,7 @@ export default class App {
     this.player = new Player()
     this.coins = []
     this.score = new Score()
+    this.gameHandler = new GameHandler()
 
 
     // 🎯 자동으로 실행되는 로직, bind로 this조정
@@ -52,8 +54,9 @@ export default class App {
       if (delta < App.interval) return
 
 
+      if (this.gameHandler.status !== "PLAYING") return
+
       App.ctx.clearRect(0, 0, App.width, App.height)
-      App.ctx.fillRect(50, 50, 100, 100)
 
       // 배경 애니메이션
       this.backgrounds.forEach(background => {
