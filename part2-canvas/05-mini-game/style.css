@@ -48,6 +48,7 @@ canvas {
 
   opacity: 0;
   transform: scale(2);
+  pointer-events: none;
 }
 .play-btn {
   position: absolute;
