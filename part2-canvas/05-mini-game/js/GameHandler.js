@@ -3,13 +3,25 @@ export default class GameHandler {
     this._status = "READY" // READY, PLAYING, FINISHED
 
     this.init()
-    this.showReadyScreen()
+  }
+
+  get status() {
+    return this._status
+  }
+  set status(value) {
+    this._status = value
+
+    switch (value) {
+      case "READY": this.showReadyScreen(); break
+    }
   }
 
   init() {
     this.readyScreen = document.querySelector(".ready-screen")
     this.gameTitle = this.readyScreen.querySelector(".game-title")
     this.playBtn = this.readyScreen.querySelectorAll(".play-btn")
+
+    this.status = "READY"
   }
 
   showReadyScreen() {
@@ -18,7 +30,6 @@ export default class GameHandler {
     })
     gsap.to(this.playBtn, {
       scale: 1, duration: 1, ease: Elastic.easeOut.config(2, 0.5), delay: 0.5
-
     })
   }
 }
