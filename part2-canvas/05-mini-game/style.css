@@ -14,3 +14,41 @@ body {
 .asset-img {
   display: none;
 }
+
+.main {
+  position: relative;
+  overflow: hidden;
+}
+.ready-screen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.game-title {
+  font-family: "Jua", sans-serif;
+  position: absolute;
+  top: 20vh;
+  color: #ffffff;
+  font-size: 6rem;
+}
+.play-btn {
+  position: absolute;
+  width: 11vmin;
+  cursor: pointer;
+  left: 50vw;
+  bottom: 30vh;
+  transform: translate(-50%, -50%);
+}
+.btn-shape {
+  fill: white;
+}
