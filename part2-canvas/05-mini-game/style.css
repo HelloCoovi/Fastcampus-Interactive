@@ -24,7 +24,8 @@ canvas {
   position: relative;
   overflow: hidden;
 }
-.ready-screen {
+.ready-screen,
+.finish-screen {
   position: absolute;
   left: 0;
   top: 0;
@@ -42,7 +43,7 @@ canvas {
 .game-title {
   font-family: "Jua", sans-serif;
   position: absolute;
-  top: 20vh;
+  top: 18vmin;
   color: #ffffff;
   font-size: 6rem;
 
@@ -50,9 +51,10 @@ canvas {
   transform: scale(2);
   pointer-events: none;
 }
-.play-btn {
+.play-btn,
+.replay-btn {
   position: absolute;
-  width: 11vmin;
+  width: 18vmin;
   cursor: pointer;
   left: 50vw;
   bottom: 30vh;
@@ -60,4 +62,21 @@ canvas {
 }
 .btn-shape {
   fill: white;
+}
+
+.finish-screen {
+  color: #fff;
+  font-family: "Jua";
+}
+.finish-screen > .distance {
+  font-size: 15vmin;
+}
+.finish-screen > .coin {
+  font-size: 8vmin;
+  margin-bottom: 8vmin;
+  color: gold;
+}
+
+.ready-screen {
+  display: none;
 }
