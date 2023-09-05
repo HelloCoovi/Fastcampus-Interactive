@@ -30,6 +30,10 @@ export default class App {
     App.canvas.width = App.width * App.dpr
     App.canvas.height = App.height * App.dpr
     App.ctx.scale(App.dpr, App.dpr)
+
+    this.backgrounds.forEach(background => {
+      background.draw()
+    })
   }
 
   render() {
