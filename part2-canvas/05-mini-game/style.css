@@ -67,6 +67,9 @@ canvas {
 .finish-screen {
   color: #fff;
   font-family: "Jua";
+
+  opacity: 0;
+  display: none;
 }
 .finish-screen > .distance {
   font-size: 15vmin;
@@ -75,8 +78,4 @@ canvas {
   font-size: 8vmin;
   margin-bottom: 8vmin;
   color: gold;
-}
-
-.ready-screen {
-  display: none;
 }
