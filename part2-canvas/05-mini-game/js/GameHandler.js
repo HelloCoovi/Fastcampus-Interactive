@@ -58,7 +58,11 @@ export default class GameHandler {
     this.distanceText.innerText = `${this.app.score.distCount.toFixed(1)}m`
     this.coinText.innerText = `${this.app.score.coinCount} coin`
 
-    gsap.fromTo(this.finishScreen, { opacity: 0, display: "none" }, {
+    gsap.set(this.distanceText, { y: 0 });
+    gsap.set(this.coinText, { y: 0 });
+    gsap.set(this.replayBtn, { opacity: 0, scale: 0, y: 0, rotation: 0, pointerEvents: "none" });
+
+    gsap.fromTo(this.finishScreen, { opacity: 0 }, {
       opacity: 1, duration: 0.5, display: "flex"
     })
     gsap.fromTo(this.distanceText, { opacity: 0, scale: 0 }, {
@@ -73,11 +77,15 @@ export default class GameHandler {
     gsap.to(this.coinText, {
       duration: 0.5, y: -80, delay: 1.5
     })
-    gsap.fromTo(this.replayBtn, { opacity: 0, scale: 0 }, {
-      opacity: 1, scale: 1, rotation: 720, duration: 0.5, y: 50, delay: 1.5
+    gsap.fromTo(this.replayBtn, { opacity: 0, scale: 0, pointerEvents: "all" }, {
+      opacity: 1, scale: 1, rotation: -720, duration: 0.5, y: 50, delay: 1.5
     })
   }
   hideFinishScreen() {
-
+    gsap.fromTo(this.finishScreen, { opacity: 1 }, {
+      opacity: 0, pointerEvents: "none", duration: 0.3
+    })
+    this.status = "PLAYING"
+    this.app.reset()
   }
 }

@@ -19,11 +19,16 @@ export default class App {
       new Background({ img: document.querySelector("#bg2-img"), speed: 2 }),
       new Background({ img: document.querySelector("#bg1-img"), speed: 4 })
     ]
+
+    this.gameHandler = new GameHandler(this)
+    this.reset()
+  }
+
+  reset() {
     this.walls = [new Wall({ type: "SMALL" })]
     this.player = new Player()
     this.coins = []
     this.score = new Score()
-    this.gameHandler = new GameHandler(this)
   }
 
   init() {
@@ -93,6 +98,14 @@ export default class App {
       // 플레이어 애니메이션
       this.player.update()
       this.player.draw()
+
+      if (
+        this.player.y >= App.height ||
+        this.player.y + this.player.height <= 0
+      ) {
+        this.gameHandler.status = "FINISHED"
+      }
+
 
       // 코인 애니메이션
       this.coins.forEach((coin) => {
