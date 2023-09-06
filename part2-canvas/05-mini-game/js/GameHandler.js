@@ -1,5 +1,6 @@
 export default class GameHandler {
-  constructor() {
+  constructor(app) {
+    this.app = app
     this._status = "READY" // READY, PLAYING, FINISHED
 
     this.init()
@@ -54,6 +55,9 @@ export default class GameHandler {
   }
 
   showFinishScreen() {
+    this.distanceText.innerText = `${this.app.score.distCount.toFixed(1)}m`
+    this.coinText.innerText = `${this.app.score.coinCount} coin`
+
     gsap.fromTo(this.finishScreen, { opacity: 0, display: "none" }, {
       opacity: 1, duration: 0.5, display: "flex"
     })

@@ -23,7 +23,7 @@ export default class App {
     this.player = new Player()
     this.coins = []
     this.score = new Score()
-    this.gameHandler = new GameHandler()
+    this.gameHandler = new GameHandler(this)
   }
 
   init() {
