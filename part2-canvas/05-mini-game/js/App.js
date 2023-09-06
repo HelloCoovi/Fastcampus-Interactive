@@ -86,9 +86,8 @@ export default class App {
       const isCollidingAnyWall = this.walls.some(wall => wall.isColliding(this.player.boundingBox));
 
       if (isCollidingAnyWall) {
-        this.player.boundingBox.color = `rgba(255, 0, 0, 0.3)`
-      } else {
-        this.player.boundingBox.color = `rgba(0, 0, 255, 0.3)`
+        this.gameHandler.status = "FINISHED"
+        return;
       }
 
       // 플레이어 애니메이션
