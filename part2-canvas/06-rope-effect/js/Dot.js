@@ -4,6 +4,9 @@ export default class Dot {
   constructor(x, y) {
     this.pos = new Vector(x, y)
     this.oldPos = new Vector(x, y)
+
+    this.gravity = new Vector(0, 1)
+    this.friction = 0.97
   }
 
   update() {
@@ -11,7 +14,9 @@ export default class Dot {
 
     this.oldPos.setXY(this.pos.x, this.pos.y)
 
-    vel.x += 0.1
+    vel.y += 0.1
+    vel.mult(this.friction)
+    vel.add(this.gravity)
     this.pos.add(vel)
   }
 

@@ -38,7 +38,7 @@ export default class App {
       if (delta < App.interval) return
       then = now - (delta % App.interval)
 
-      this.ctx.clearRect(0, 0, App.width, App.height)
+      // this.ctx.clearRect(0, 0, App.width, App.height)
 
       this.dots.forEach(dot => {
         dot.update()
