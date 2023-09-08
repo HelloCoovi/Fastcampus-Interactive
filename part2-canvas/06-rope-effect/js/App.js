@@ -21,6 +21,8 @@ export default class App {
     this.sticks = [
       new Stick(this.dots[0], this.dots[1])
     ]
+
+    this.dots[0].pinned = true
   }
 
 
@@ -45,7 +47,7 @@ export default class App {
       if (delta < App.interval) return
       then = now - (delta % App.interval)
 
-      // this.ctx.clearRect(0, 0, App.width, App.height)
+      this.ctx.clearRect(0, 0, App.width, App.height)
 
       this.dots.forEach(dot => {
         dot.update()
