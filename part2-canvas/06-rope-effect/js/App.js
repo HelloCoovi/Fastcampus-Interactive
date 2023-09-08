@@ -1,4 +1,5 @@
 import Dot from './Dot.js'
+import Stick from './Stick.js'
 
 export default class App {
   static width = window.innerWidth
@@ -13,7 +14,13 @@ export default class App {
     this.resize()
     window.addEventListener("resize", this.resize.bind(this))
 
-    this.dots = [new Dot(App.width * 0.1, App.height * 0.1)]
+    this.dots = [
+      new Dot(App.width * 0.1, App.height * 0.1),
+      new Dot(App.width * 0.2, App.height * 0.2)
+    ]
+    this.sticks = [
+      new Stick(this.dots[0], this.dots[1])
+    ]
   }
 
 
@@ -43,6 +50,10 @@ export default class App {
       this.dots.forEach(dot => {
         dot.update()
         dot.draw(this.ctx)
+      })
+      this.sticks.forEach(stick => {
+        stick.update()
+        stick.draw(this.ctx)
       })
     }
     requestAnimationFrame(frame)
