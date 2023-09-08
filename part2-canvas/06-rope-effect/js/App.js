@@ -1,3 +1,5 @@
+import Dot from './Dot.js'
+
 export default class App {
   static width = window.innerWidth
   static height = window.innerHeight
@@ -9,7 +11,9 @@ export default class App {
     this.ctx = this.canvas.getContext('2d')
 
     this.resize()
-    window.addEventListener('resize', this.resize.bind(this))
+    window.addEventListener("resize", this.resize.bind(this))
+
+    this.dots = [new Dot(App.width * 0.1, App.height * 0.1)]
   }
 
 
@@ -31,11 +35,15 @@ export default class App {
       requestAnimationFrame(frame)
       now = Date.now()
       delta = now - then
-      if (delta > App.interval) return
+      if (delta < App.interval) return
       then = now - (delta % App.interval)
 
       this.ctx.clearRect(0, 0, App.width, App.height)
-      this.ctx.fillRect(100, 100, 100, 100)
+
+      this.dots.forEach(dot => {
+        dot.update()
+        dot.draw(this.ctx)
+      })
     }
     requestAnimationFrame(frame)
   }
