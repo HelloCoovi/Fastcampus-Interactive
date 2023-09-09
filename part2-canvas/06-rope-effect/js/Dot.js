@@ -13,7 +13,7 @@ export default class Dot {
     this.mass = 1
   }
 
-  update() {
+  update(mouse) {
     if (this.pinned) return
     let vel = Vector.sub(this.pos, this.oldPos)
 

@@ -1,4 +1,5 @@
 import Dot from './Dot.js'
+import Mouse from './Mouse.js'
 import Stick from './Stick.js'
 
 export default class App {
@@ -13,6 +14,8 @@ export default class App {
 
     this.resize()
     window.addEventListener("resize", this.resize.bind(this))
+
+    this.mouse = new Mouse(this.canvas)
 
     this.dots = [
       new Dot(App.width * 0.1, App.height * 0.2),
@@ -54,7 +57,7 @@ export default class App {
       this.ctx.clearRect(0, 0, App.width, App.height)
 
       this.dots.forEach(dot => {
-        dot.update()
+        dot.update(this.mouse)
         dot.draw(this.ctx)
       })
       this.sticks.forEach(stick => {
