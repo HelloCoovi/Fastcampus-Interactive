@@ -23,6 +23,14 @@ export default class Dot {
     vel.mult(this.friction)
     vel.add(this.gravity)
     this.pos.add(vel)
+
+    let { x: dx, y: dy } = Vector.sub(mouse.pos, this.pos)
+    const dist = Math.sqrt(dx * dx + dy * dy)
+
+    if (dist > mouse.radius) return
+
+    const force = (mouse.radius - dist) / mouse.radius
+    console.log(force)
   }
 
   draw(ctx) {
