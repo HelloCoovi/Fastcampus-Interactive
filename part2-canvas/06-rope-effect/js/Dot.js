@@ -29,8 +29,10 @@ export default class Dot {
 
     if (dist > mouse.radius) return
 
+    const direction = new Vector(dx / dist, dy / dist)
     const force = (mouse.radius - dist) / mouse.radius
-    console.log(force)
+
+    this.pos.add(direction.mult(force))
   }
 
   draw(ctx) {
