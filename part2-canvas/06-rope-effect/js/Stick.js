@@ -4,6 +4,9 @@ export default class Stick {
     this.endPoint = p2
 
     this.length = this.startPoint.pos.dist(this.endPoint.pos)
+
+    this.tension = 1 * 0.05 // 원래 값(100%)에서 0.05를 곱해서 돌아가는 속도를 5% 변경
+    // this.tension = 0.05
   }
   update() {
     const dx = this.endPoint.pos.x - this.startPoint.pos.x
@@ -12,8 +15,8 @@ export default class Stick {
     const dist = Math.sqrt(dx * dx + dy * dy)
     const diff = (dist - this.length) / dist
 
-    const offsetX = diff * dx
-    const offsetY = diff * dy
+    const offsetX = diff * dx * this.tension
+    const offsetY = diff * dy * this.tension
 
     const m = this.startPoint.mass + this.endPoint.mass
     const m1 = this.endPoint.mass / m

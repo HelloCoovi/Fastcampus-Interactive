@@ -30,7 +30,7 @@ export default class App {
     this.dots[0].pinned = true
     this.dots[2].pinned = true
 
-    this.dots[3].mass = 100
+    this.dots[3].mass = 10
   }
 
 
