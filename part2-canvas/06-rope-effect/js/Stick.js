@@ -15,13 +15,17 @@ export default class Stick {
     const offsetX = diff * dx
     const offsetY = diff * dy
 
+    const m = this.startPoint.mass + this.endPoint.mass
+    const m1 = this.endPoint.mass / m
+    const m2 = this.startPoint.mass / m
+
     if (!this.startPoint.pinned) {
-      this.startPoint.pos.x += offsetX * 0.5
-      this.startPoint.pos.y += offsetY * 0.5
+      this.startPoint.pos.x += offsetX * m1
+      this.startPoint.pos.y += offsetY * m1
     }
     if (!this.endPoint.pinned) {
-      this.endPoint.pos.x -= offsetX * 0.5
-      this.endPoint.pos.y -= offsetY * 0.5
+      this.endPoint.pos.x -= offsetX * m2
+      this.endPoint.pos.y -= offsetY * m2
     }
   }
   draw(ctx) {
