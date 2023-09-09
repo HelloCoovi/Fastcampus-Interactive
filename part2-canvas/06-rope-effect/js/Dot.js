@@ -19,21 +19,20 @@ export default class Dot {
 
     this.oldPos.setXY(this.pos.x, this.pos.y)
 
-    vel.y += 0.1
     vel.mult(this.friction)
     vel.add(this.gravity)
-    this.pos.add(vel)
 
     let { x: dx, y: dy } = Vector.sub(mouse.pos, this.pos)
     const dist = Math.sqrt(dx * dx + dy * dy)
 
-    if (dist > mouse.radius) return
-
     const direction = new Vector(dx / dist, dy / dist)
-    const force = (mouse.radius - dist) / mouse.radius
+    const force = Math.max((mouse.radius - dist) / mouse.radius, 0)
 
     if (force > 0.8) this.pos.setXY(mouse.pos.x, mouse.pos.y)
-    else this.pos.add(direction.mult(force).mult(5))
+    else {
+      this.pos.add(vel)
+      this.pos.add(direction.mult(force).mult(5))
+    }
   }
 
   draw(ctx) {
