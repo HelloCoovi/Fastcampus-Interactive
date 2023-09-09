@@ -5,7 +5,7 @@ export default class Stick {
 
     this.length = this.startPoint.pos.dist(this.endPoint.pos)
 
-    this.tension = 1 * 0.05 // 원래 값(100%)에서 0.05를 곱해서 돌아가는 속도를 5% 변경
+    this.tension = 1 * 0.05 // 원래 값(100%)에서 0.05를 곱해서 돌아가는 속도를 5%로 변경
     // this.tension = 0.05
   }
   update() {
