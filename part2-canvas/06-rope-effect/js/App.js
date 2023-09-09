@@ -56,14 +56,11 @@ export default class App {
 
       this.ctx.clearRect(0, 0, App.width, App.height)
 
-      this.dots.forEach(dot => {
-        dot.update(this.mouse)
-        dot.draw(this.ctx)
-      })
-      this.sticks.forEach(stick => {
-        stick.update()
-        stick.draw(this.ctx)
-      })
+      this.dots.forEach(dot => dot.update(this.mouse))
+      this.sticks.forEach(stick => stick.update())
+
+      this.dots.forEach(dot => dot.draw(this.ctx))
+      this.sticks.forEach(stick => stick.draw(this.ctx))
     }
     requestAnimationFrame(frame)
   }
