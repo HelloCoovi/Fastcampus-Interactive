@@ -31,7 +31,7 @@ export default class Dot {
     if (force > 0.8) this.pos.setXY(mouse.pos.x, mouse.pos.y)
     else {
       this.pos.add(vel)
-      this.pos.add(direction.mult(force).mult(5))
+      this.pos.add(direction.mult(force).mult(10))
     }
   }
 
