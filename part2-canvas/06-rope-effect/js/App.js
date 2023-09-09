@@ -20,13 +20,13 @@ export default class App {
     this.dots = [
       new Dot(App.width * 0.1, App.height * 0.2),
       new Dot(App.width * 0.4, App.height * 0.1),
-      // new Dot(App.width * 0.5, App.height * 0.05),
-      // new Dot(App.width * 0.7, App.height * 0.05),
+      new Dot(App.width * 0.5, App.height * 0.05),
+      new Dot(App.width * 0.7, App.height * 0.05),
     ]
     this.sticks = [
       new Stick(this.dots[0], this.dots[1]),
-      // new Stick(this.dots[1], this.dots[2]),
-      // new Stick(this.dots[2], this.dots[3]),
+      new Stick(this.dots[1], this.dots[2]),
+      new Stick(this.dots[2], this.dots[3]),
     ]
 
     this.dots[0].pinned = true
