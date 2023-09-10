@@ -36,10 +36,7 @@ export default class Dot {
   }
 
   draw(ctx) {
-    ctx.fillStyle = "#000"
-    ctx.beginPath()
-    ctx.arc(this.pos.x, this.pos.y, 10, 0, Math.PI * 2)
-    ctx.fill()
-    ctx.closePath()
+    ctx.fillStyle = "#999"
+    ctx.fillRect(this.pos.x - this.mass, this.pos.y - this.mass, this.mass * 2, this.mass * 2)
   }
 }

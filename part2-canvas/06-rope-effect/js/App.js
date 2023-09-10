@@ -40,7 +40,8 @@ export default class App {
     for (let i = 0; i < TOTAL; i++) {
       const rope = new Rope({
         x: randomNumBetween(App.width * 0.3, App.height * 0.7),
-        y: 0
+        y: 0,
+        gap: randomNumBetween(App.height * 0.05, App.height * 0.08),
       })
       rope.pin(0)
       this.ropes.push(rope)
