@@ -19,6 +19,13 @@ export default class Rope {
     this.dots[index].pinned = true
   }
 
+  checkPullingOut() {
+    const dist = this.dots[0].pos.dist(this.dots[1].pos)
+    if (dist / this.sticks[0].length > 1.5) {
+      this.dots[0].pinned = false
+    }
+  }
+
   create() {
     for (let i = 0; i < this.segments; i++) {
       this.dots.push(new Dot(this.x, this.y + (i * this.gap)))
@@ -37,6 +44,8 @@ export default class Rope {
   }
 
   draw(ctx) {
+    this.checkPullingOut()
+
     this.dots.forEach(dot => dot.draw(ctx))
     this.sticks.forEach(stick => stick.draw(ctx))
 
