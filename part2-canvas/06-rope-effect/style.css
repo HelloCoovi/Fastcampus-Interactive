@@ -11,3 +11,7 @@ body {
 
   background-color: #1f1f1f;
 }
+
+.asset-img {
+  display: none;
+}
