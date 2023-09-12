@@ -1,20 +1,13 @@
-import { useState } from "react";
 import ArrowImg from "./assets/arrow.svg";
 import Nudake from "./containers/Nudake";
 
 function App() {
-  // 👨‍🎓🩺 cancelAnimationFrame 확인 & react 생애 주기 확인
-  const [toggled, setToggled] = useState(false);
-
-  console.log(toggled);
-
   return (
     <>
       <div className="app">
         <section className="section-1">
           <header>
-            {/* 👨‍🎓🩺  */}
-            <h1 onClick={() => setToggled(!toggled)}>Portfolio</h1>
+            <h1>Portfolio</h1>
             <ul>
               <li>instagram</li>
               <li>twitter</li>
@@ -22,8 +15,9 @@ function App() {
             </ul>
           </header>
           <main>
-            {/* 👨‍🎓🩺  */}
-            <div>{toggled ? "toggled" : <Nudake />}</div>
+            <div>
+              <Nudake />
+            </div>
           </main>
         </section>
         <section className="section-2">What is Lorem Ipsum?</section>
