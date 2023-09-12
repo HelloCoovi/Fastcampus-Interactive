@@ -49,8 +49,17 @@ function Nudake() {
       canvas.removeEventListener("mouseup", onMouseUp);
       canvas.removeEventListener("mousemove", onMouseMove);
     }
-    function onMouseMove() {
+    function onMouseMove(event) {
       console.log("onMouseMove");
+      drawCircles(event);
+    }
+
+    function drawCircles(event) {
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.beginPath();
+      ctx.arc(event.offsetX, event.offsetY, 50, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.closePath();
     }
 
     canvas.addEventListener("mousedown", onMousedown);
