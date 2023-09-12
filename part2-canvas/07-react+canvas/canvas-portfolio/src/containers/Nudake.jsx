@@ -39,10 +39,28 @@ function Nudake() {
       };
     }
 
+    function onMousedown() {
+      console.log("onMousedown");
+      canvas.addEventListener("mouseup", onMouseUp);
+      canvas.addEventListener("mousemove", onMouseMove);
+    }
+    function onMouseUp() {
+      console.log("onMouseUp");
+      canvas.removeEventListener("mouseup", onMouseUp);
+      canvas.removeEventListener("mousemove", onMouseMove);
+    }
+    function onMouseMove() {
+      console.log("onMouseMove");
+    }
+
+    canvas.addEventListener("mousedown", onMousedown);
+
     window.addEventListener("resize", resize);
     resize();
 
     return () => {
+      canvas.removeEventListener("mousedown", onMousedown);
+
       window.removeEventListener("resize", resize);
     };
   }, []);
