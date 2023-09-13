@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react";
+// import lodash from "lodash";
+import throttle from "lodash/throttle";
 
 import "../style/containers/Nudake.css";
 
@@ -82,10 +84,10 @@ function Nudake() {
       prevPos = nextPos;
     }
 
-    function checkPercent() {
+    const checkPercent = throttle(() => {
       const percent = getScrupedPercent(ctx, canvasWidth, canvasHeight);
       console.log(percent);
-    }
+    }, 500);
 
     canvas.addEventListener("mousedown", onMousedown);
 
