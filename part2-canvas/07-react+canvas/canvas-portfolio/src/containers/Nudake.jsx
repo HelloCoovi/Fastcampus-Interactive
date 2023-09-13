@@ -39,7 +39,11 @@ function Nudake() {
       const image = new Image();
       image.src = imageSrcs[currIndex];
       image.onload = () => {
+        ctx.globalCompositeOperation = "source-over";
         ctx.drawImage(image, 0, 0, canvasWidth, canvasHeight);
+
+        const nextImage = imageSrcs[(currIndex + 1) % imageSrcs.length];
+        canvasParent.style.backgroundImage = `url(${nextImage})`;
       };
     }
 
@@ -86,7 +90,11 @@ function Nudake() {
 
     const checkPercent = throttle(() => {
       const percent = getScrupedPercent(ctx, canvasWidth, canvasHeight);
-      console.log(percent);
+
+      if (percent > 50) {
+        currIndex = (currIndex + 1) % imageSrcs.length;
+        drawImage();
+      }
     }, 500);
 
     canvas.addEventListener("mousedown", onMousedown);
