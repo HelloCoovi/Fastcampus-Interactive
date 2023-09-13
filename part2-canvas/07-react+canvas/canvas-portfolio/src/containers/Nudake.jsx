@@ -5,7 +5,7 @@ import "../style/containers/Nudake.css";
 import image1 from "../assets/nudake-1.jpg";
 import image2 from "../assets/nudake-2.jpg";
 import image3 from "../assets/nudake-3.jpg";
-import { getAngle, getDistance } from "../utils/utils";
+import { getAngle, getDistance, getScrupedPercent } from "../utils/utils";
 
 function Nudake() {
   const canvasRef = useRef(null);
@@ -59,6 +59,8 @@ function Nudake() {
     function onMouseMove(event) {
       console.log("onMouseMove");
       drawCircles(event);
+
+      checkPercent();
     }
 
     function drawCircles(event) {
@@ -78,6 +80,11 @@ function Nudake() {
       }
 
       prevPos = nextPos;
+    }
+
+    function checkPercent() {
+      const percent = getScrupedPercent(ctx, canvasWidth, canvasHeight);
+      console.log(percent);
     }
 
     canvas.addEventListener("mousedown", onMousedown);
