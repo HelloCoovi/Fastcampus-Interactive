@@ -44,6 +44,7 @@ function Nudake() {
     function onMousedown(event) {
       console.log("onMousedown");
       canvas.addEventListener("mouseup", onMouseUp);
+      canvas.addEventListener("mouseleave", onMouseUp);
       canvas.addEventListener("mousemove", onMouseMove);
 
       prevPos = { x: event.offsetX, y: event.offsetY };
@@ -52,6 +53,7 @@ function Nudake() {
     function onMouseUp() {
       console.log("onMouseUp");
       canvas.removeEventListener("mouseup", onMouseUp);
+      canvas.removeEventListener("mouseleave", onMouseUp);
       canvas.removeEventListener("mousemove", onMouseMove);
     }
     function onMouseMove(event) {
