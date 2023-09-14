@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 // import lodash from "lodash";
 import throttle from "lodash/throttle";
+import gsap from "gsap";
 
 import "../style/containers/Nudake.css";
 
@@ -26,6 +27,7 @@ function Nudake() {
     const loadedImages = [];
     let currIndex = 0;
     let prevPos = { x: 0, y: 0 };
+    let isChanging = false;
 
     let canvasWidth, canvasHeight;
 
@@ -57,17 +59,30 @@ function Nudake() {
     }
 
     function drawImage() {
-      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-      const image = loadedImages[currIndex];
-      ctx.globalCompositeOperation = "source-over";
-      drawImageCenter(canvas, ctx, image);
+      isChanging = true;
 
-      const nextImage = imageSrcs[(currIndex + 1) % imageSrcs.length];
-      canvasParent.style.backgroundImage = `url(${nextImage})`;
+      // ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+      const image = loadedImages[currIndex];
+
+      gsap.to(canvas, {
+        opacity: 0,
+        duration: 1,
+        onComplete: () => {
+          canvas.style.opacity = 1;
+
+          ctx.globalCompositeOperation = "source-over";
+          drawImageCenter(canvas, ctx, image);
+
+          const nextImage = imageSrcs[(currIndex + 1) % imageSrcs.length];
+          canvasParent.style.backgroundImage = `url(${nextImage})`;
+
+          isChanging = false;
+        },
+      });
     }
 
     function onMousedown(event) {
-      console.log("onMousedown");
+      if (isChanging) return;
       canvas.addEventListener("mouseup", onMouseUp);
       canvas.addEventListener("mouseleave", onMouseUp);
       canvas.addEventListener("mousemove", onMouseMove);
@@ -76,13 +91,12 @@ function Nudake() {
     }
 
     function onMouseUp() {
-      console.log("onMouseUp");
       canvas.removeEventListener("mouseup", onMouseUp);
       canvas.removeEventListener("mouseleave", onMouseUp);
       canvas.removeEventListener("mousemove", onMouseMove);
     }
     function onMouseMove(event) {
-      console.log("onMouseMove");
+      if (isChanging) return;
       drawCircles(event);
 
       checkPercent();
