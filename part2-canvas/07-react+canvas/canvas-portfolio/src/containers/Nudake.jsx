@@ -7,7 +7,12 @@ import "../style/containers/Nudake.css";
 import image1 from "../assets/nudake-1.jpg";
 import image2 from "../assets/nudake-2.jpg";
 import image3 from "../assets/nudake-3.jpg";
-import { getAngle, getDistance, getScrupedPercent } from "../utils/utils";
+import {
+  drawImageCenter,
+  getAngle,
+  getDistance,
+  getScrupedPercent,
+} from "../utils/utils";
 
 function Nudake() {
   const canvasRef = useRef(null);
@@ -40,7 +45,7 @@ function Nudake() {
       image.src = imageSrcs[currIndex];
       image.onload = () => {
         ctx.globalCompositeOperation = "source-over";
-        ctx.drawImage(image, 0, 0, canvasWidth, canvasHeight);
+        drawImageCenter(canvas, ctx, image);
 
         const nextImage = imageSrcs[(currIndex + 1) % imageSrcs.length];
         canvasParent.style.backgroundImage = `url(${nextImage})`;
