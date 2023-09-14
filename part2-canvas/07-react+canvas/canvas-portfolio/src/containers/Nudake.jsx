@@ -64,9 +64,11 @@ function Nudake() {
       // ctx.clearRect(0, 0, canvasWidth, canvasHeight);
       const image = loadedImages[currIndex];
 
+      const firstDrawing = ctx.globalCompositeOperation === "source-over";
+
       gsap.to(canvas, {
         opacity: 0,
-        duration: 1,
+        duration: firstDrawing ? 0 : 1,
         onComplete: () => {
           canvas.style.opacity = 1;
 
@@ -75,6 +77,7 @@ function Nudake() {
 
           const nextImage = imageSrcs[(currIndex + 1) % imageSrcs.length];
           canvasParent.style.backgroundImage = `url(${nextImage})`;
+          prevPos = null;
 
           isChanging = false;
         },
@@ -104,6 +107,7 @@ function Nudake() {
 
     function drawCircles(event) {
       const nextPos = { x: event.offsetX, y: event.offsetY };
+      if (!prevPos) prevPos = nextPos;
       const dist = getDistance(prevPos, nextPos);
       const angle = getAngle(prevPos, nextPos);
 
