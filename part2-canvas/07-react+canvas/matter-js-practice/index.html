@@ -15,5 +15,29 @@
   </head>
   <body>
     <canvas></canvas>
+
+    <script>
+      const canvas = document.querySelector("canvas");
+      const canvasWidth = 500;
+      const canvasHeight = 700;
+
+      const { Engine, Render, Runner } = Matter;
+
+      const engine = Engine.create();
+
+      const render = Render.create({
+        canvas: canvas,
+        engine: engine,
+        options: {
+          width: canvasWidth,
+          height: canvasHeight,
+        },
+      });
+
+      const runner = Runner.create();
+
+      Render.run(render);
+      Runner.run(runner, engine);
+    </script>
   </body>
 </html>
