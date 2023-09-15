@@ -21,7 +21,15 @@
       const canvasWidth = 500;
       const canvasHeight = 700;
 
-      const { Engine, Render, Runner, Bodies, Composite } = Matter;
+      const {
+        Engine,
+        Render,
+        Runner,
+        Bodies,
+        Composite,
+        Mouse,
+        MouseConstraint,
+      } = Matter;
 
       const engine = Engine.create();
 
@@ -40,6 +48,10 @@
       Render.run(render);
       Runner.run(runner, engine);
 
+      const mouse = Mouse.create(canvas);
+
+      const mouseConstraint = MouseConstraint.create(engine, { mouse: mouse });
+
       const box = Bodies.rectangle(canvasWidth / 2, 100, 50, 50);
       const ground = Bodies.rectangle(
         canvasWidth / 2,
@@ -49,7 +61,7 @@
         { isStatic: true }
       );
 
-      Composite.add(engine.world, [box, ground]);
+      Composite.add(engine.world, [box, ground, mouseConstraint]);
     </script>
   </body>
 </html>
