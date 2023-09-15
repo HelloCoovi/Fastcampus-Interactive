@@ -40,8 +40,15 @@
       Runner.run(runner, engine);
 
       const box = Bodies.rectangle(canvasWidth / 2, 100, 50, 50);
+      const ground = Bodies.rectangle(
+        canvasWidth / 2,
+        canvasHeight,
+        canvasWidth,
+        50,
+        { isStatic: true }
+      );
 
-      Composite.add(engine.world, [box]);
+      Composite.add(engine.world, [box, ground]);
     </script>
   </body>
 </html>
