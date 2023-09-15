@@ -21,7 +21,7 @@
       const canvasWidth = 500;
       const canvasHeight = 700;
 
-      const { Engine, Render, Runner } = Matter;
+      const { Engine, Render, Runner, Bodies, Composite } = Matter;
 
       const engine = Engine.create();
 
@@ -38,6 +38,10 @@
 
       Render.run(render);
       Runner.run(runner, engine);
+
+      const box = Bodies.rectangle(canvasWidth / 2, 100, 50, 50);
+
+      Composite.add(engine.world, [box]);
     </script>
   </body>
 </html>
