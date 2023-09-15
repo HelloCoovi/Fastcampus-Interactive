@@ -29,6 +29,7 @@
         Composite,
         Mouse,
         MouseConstraint,
+        Events,
       } = Matter;
 
       const engine = Engine.create();
@@ -76,6 +77,15 @@
         );
         Composite.add(engine.world, [box]);
       }
+
+      Events.on(runner, "tick", () => {
+        engine.world.bodies.forEach((body) => {
+          const isOutside = body.position.y > canvasHeight;
+
+          if (isOutside) Composite.remove(engine.world, body);
+        });
+        console.log(engine.world.bodies.length);
+      });
     </script>
   </body>
 </html>
