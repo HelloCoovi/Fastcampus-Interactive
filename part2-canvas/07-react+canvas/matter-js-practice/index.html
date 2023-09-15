@@ -62,6 +62,20 @@
       );
 
       Composite.add(engine.world, [box, ground, mouseConstraint]);
+
+      canvas.addEventListener("mousewheel", () => {
+        createBox();
+      });
+
+      function createBox() {
+        const box = Bodies.rectangle(
+          mouse.position.x,
+          mouse.position.y,
+          50,
+          50
+        );
+        Composite.add(engine.world, [box]);
+      }
     </script>
   </body>
 </html>
