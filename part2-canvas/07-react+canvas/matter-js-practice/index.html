@@ -32,7 +32,9 @@
         Events,
       } = Matter;
 
-      const engine = Engine.create();
+      const engine = Engine.create({
+        enableSleeping: true,
+      });
 
       const render = Render.create({
         canvas: canvas,
@@ -41,6 +43,7 @@
           width: canvasWidth,
           height: canvasHeight,
           wireframes: false,
+          showSleeping: true,
         },
       });
 
