@@ -25,7 +25,9 @@ function RotateCanvas() {
     initMouse();
     initGround();
 
-    canvas.addEventListener("mousewheel", createBox);
+    canvas.addEventListener("mousewheel", () => {
+      addRect(mouse.position.x, mouse.position.y, 50, 50);
+    });
 
     function initScreen() {
       engine = Engine.create();
@@ -59,9 +61,9 @@ function RotateCanvas() {
       Composite.add(engine.world, ground);
     }
 
-    function createBox() {
-      const box = Bodies.rectangle(mouse.position.x, mouse.position.y, 50, 50);
-      Composite.add(engine.world, box);
+    function addRect(x, y, w, h, options = {}) {
+      const rect = Bodies.rectangle(x, y, w, h, options);
+      Composite.add(engine.world, rect);
     }
   }, []);
 
