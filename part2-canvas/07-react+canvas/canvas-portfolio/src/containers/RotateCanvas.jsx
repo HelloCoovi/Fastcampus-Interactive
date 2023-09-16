@@ -18,28 +18,37 @@ function RotateCanvas() {
     const cw = 1000;
     const ch = 1000;
 
-    const engine = Engine.create();
-    const render = Render.create({
-      canvas: canvas,
-      engine: engine,
-      options: {
-        width: cw,
-        height: ch,
-        wireframes: false,
-        background: "#1b1b19",
-      },
-    });
-    const runner = Runner.create();
+    let engine, render, runner, mouse, mouseConstraint;
 
-    Render.run(render);
-    Runner.run(runner, engine);
+    initScreen();
+    initMouse();
 
-    const mouse = Mouse.create(canvas);
-    const mouseConstraint = MouseConstraint.create(engine, {
-      mouse: mouse,
-    });
+    function initScreen() {
+      engine = Engine.create();
+      render = Render.create({
+        canvas: canvas,
+        engine: engine,
+        options: {
+          width: cw,
+          height: ch,
+          wireframes: false,
+          background: "#1b1b19",
+        },
+      });
+      runner = Runner.create();
 
-    Composite.add(engine.world, mouseConstraint);
+      Render.run(render);
+      Runner.run(runner, engine);
+    }
+
+    function initMouse() {
+      mouse = Mouse.create(canvas);
+      mouseConstraint = MouseConstraint.create(engine, {
+        mouse: mouse,
+      });
+
+      Composite.add(engine.world, mouseConstraint);
+    }
   }, []);
 
   return (
