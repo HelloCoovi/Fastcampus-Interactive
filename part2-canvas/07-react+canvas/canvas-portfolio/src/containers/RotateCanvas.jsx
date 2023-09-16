@@ -7,6 +7,7 @@ import {
   Mouse,
   MouseConstraint,
   Composite,
+  Bodies,
 } from "matter-js";
 import { useEffect, useRef } from "react";
 
@@ -22,6 +23,9 @@ function RotateCanvas() {
 
     initScreen();
     initMouse();
+    initGround();
+
+    canvas.addEventListener("mousewheel", createBox);
 
     function initScreen() {
       engine = Engine.create();
@@ -48,6 +52,16 @@ function RotateCanvas() {
       });
 
       Composite.add(engine.world, mouseConstraint);
+    }
+
+    function initGround() {
+      const ground = Bodies.rectangle(cw / 2, ch, cw, 50, { isStatic: true });
+      Composite.add(engine.world, ground);
+    }
+
+    function createBox() {
+      const box = Bodies.rectangle(mouse.position.x, mouse.position.y, 50, 50);
+      Composite.add(engine.world, box);
     }
   }, []);
 
