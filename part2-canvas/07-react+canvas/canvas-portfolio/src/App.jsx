@@ -1,5 +1,6 @@
 import ArrowImg from "./assets/arrow.svg";
 import Nudake from "./containers/Nudake";
+import RotateCanvas from "./containers/RotateCanvas";
 
 function App() {
   return (
@@ -30,23 +31,18 @@ function App() {
             </div>
           </aside>
           <article>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an
-            unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-            typesetting, remaining essentially unchanged. It was in the 1960s with the release of sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-            software like PageMaker including versions of Lorem Ipsum.
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry&apos;s standard dummy
+            text ever since the 1500s, when an unknown printer took a galley of
+            type and scrambled it to make a type specimen book. It has survived
+            not only five centuries, but also the leap into electronic
+            typesetting, remaining essentially unchanged. It was in the 1960s
+            with the release of sheets containing Lorem Ipsum passages, and more
+            recently with desktop publishing software like PageMaker including
+            versions of Lorem Ipsum.
           </article>
         </section>
-        <section className="section-4">
-          <canvas></canvas>
-          <aside>
-            <h1>Javascript</h1>
-            <h2>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</h2>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an
-              unknown
-            </p>
-          </aside>
-        </section>
+        <RotateCanvas />
       </div>
       <footer>
         <div className="email">test@gmail.com</div>
