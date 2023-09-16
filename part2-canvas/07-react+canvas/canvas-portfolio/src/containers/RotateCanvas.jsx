@@ -57,8 +57,22 @@ function RotateCanvas() {
     }
 
     function initGround() {
-      const ground = Bodies.rectangle(cw / 2, ch, cw, 50, { isStatic: true });
-      Composite.add(engine.world, ground);
+      const segments = 32;
+      const deg = (Math.PI * 2) / segments;
+      const width = 50;
+      const radius = cw / 2 + width / 2;
+      const height = radius * Math.tan(deg / 2) * 2;
+
+      for (let i = 0; i < segments; i++) {
+        const theta = deg * i;
+        const x = Math.cos(theta) * radius + cw / 2;
+        const y = Math.sin(theta) * radius + ch / 2;
+        addRect(x, y, width, height, {
+          isStatic: true,
+          angle: theta,
+          render: { lineWidth: 15 },
+        });
+      }
     }
 
     function addRect(x, y, w, h, options = {}) {
