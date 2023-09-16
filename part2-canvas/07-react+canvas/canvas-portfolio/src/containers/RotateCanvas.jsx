@@ -70,7 +70,6 @@ function RotateCanvas() {
         addRect(x, y, width, height, {
           isStatic: true,
           angle: theta,
-          render: { lineWidth: 15 },
         });
       }
     }
