@@ -8,7 +8,8 @@
 .rotate-canvas-wrapper > canvas {
   width: 50vmin;
   height: 50vmin;
-  border-radius: 50%;
+  /* 애니메이션 구현을 위한 주석처리 */
+  /* border-radius: 50%; */
   box-shadow: inset 0 0 5px 5px rgba(0, 0, 0, 0.2);
   background-color: rgba(0, 0, 0, 0.02);
 }
