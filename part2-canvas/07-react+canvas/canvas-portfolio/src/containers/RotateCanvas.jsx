@@ -31,10 +31,7 @@ function RotateCanvas() {
     initScreen();
     initMouse();
     initGround();
-
-    canvas.addEventListener("mousewheel", () => {
-      addRect(mouse.position.x, mouse.position.y, 50, 50);
-    });
+    initImageBoxes();
 
     function initScreen() {
       engine = Engine.create();
@@ -79,6 +76,17 @@ function RotateCanvas() {
           angle: theta,
         });
       }
+    }
+
+    function initImageBoxes() {
+      addRect(cw / 2, ch / 2, 250 * 0.7, 250 * 0.7, {
+        chamfer: { radius: 20 },
+        render: { sprite: { texture: IconJS, xScale: 0.7, yScale: 0.7 } },
+      });
+
+      addRect(cw / 2, ch / 2, 250 * 0.7, 250 * 0.7, {
+        chamfer: { radius: 20 },
+      });
     }
 
     function addRect(x, y, w, h, options = {}) {
