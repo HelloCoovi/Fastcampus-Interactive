@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "../style/containers/RotateCanvas.css";
 
 import {
@@ -19,7 +20,41 @@ import IconJS from "../assets/icon_JS.png";
 import IconREACT from "../assets/icon_REACT.png";
 import IconTHREE from "../assets/icon_THREE.png";
 
+const data = {
+  JS: {
+    title: "Javascript",
+    level: 4,
+    desc: "자바스크립트에 대한 설명이라고 할 수 있습니다. 자바스크립트에 대한 설명. 자바스크립트에 대한 설명.",
+  },
+  REACT: {
+    title: "React.js",
+    level: 5,
+    desc: "React에 대한 설명이라고 할 수 있습니다. React에 대한 설명. React에 대한 설명.",
+  },
+  CSS: {
+    title: "CSS/SASS",
+    level: 3,
+    desc: "CSS에 대한 설명이라고 할 수 있습니다. CSS에 대한 설명. CSS에 대한 설명.",
+  },
+  AFRAME: {
+    title: "Aframe.js",
+    level: 4,
+    desc: "AFRAME에 대한 설명이라고 할 수 있습니다. AFRAME에 대한 설명. AFRAME에 대한 설명.",
+  },
+  THREE: {
+    title: "Three.js",
+    level: 2,
+    desc: "THREE에 대한 설명이라고 할 수 있습니다. THREE에 대한 설명. THREE에 대한 설명.",
+  },
+  HTML: {
+    title: "HTML",
+    level: 5,
+    desc: "HTML에 대한 설명이라고 할 수 있습니다. HTML에 대한 설명. HTML에 대한 설명.",
+  },
+};
+
 function RotateCanvas() {
+  const [selected, setSelected] = useState(data["JS"]);
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -137,13 +172,18 @@ function RotateCanvas() {
     <div className="rotate-canvas-wrapper">
       <canvas ref={canvasRef}></canvas>
       <aside>
-        <h1>Javascript</h1>
-        <h2>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</h2>
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry&apos;s standard dummy text
-          ever since the 1500s, when an unknown
-        </p>
+        <h1>{selected.title}</h1>
+        <h2>
+          {[...Array(5)].map((_, i) => (
+            <span
+              key={i}
+              style={{ filter: `grayscale(${selected.level <= i ? 1 : 0})` }}
+            >
+              &#11088;
+            </span>
+          ))}
+        </h2>
+        <p>{selected.desc}</p>
       </aside>
     </div>
   );
