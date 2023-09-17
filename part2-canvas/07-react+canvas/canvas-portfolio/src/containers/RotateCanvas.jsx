@@ -11,6 +11,13 @@ import {
 } from "matter-js";
 import { useEffect, useRef } from "react";
 
+import IconAFRAME from "../assets/icon_AFRAME.png";
+import IconCSS from "../assets/icon_CSS.png";
+import IconHTML from "../assets/icon_HTML.png";
+import IconJS from "../assets/icon_JS.png";
+import IconREACT from "../assets/icon_REACT.png";
+import IconTHREE from "../assets/icon_THREE.png";
+
 function RotateCanvas() {
   const canvasRef = useRef(null);
 
