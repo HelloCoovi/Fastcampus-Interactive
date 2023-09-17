@@ -8,6 +8,7 @@ import {
   MouseConstraint,
   Composite,
   Bodies,
+  Events,
 } from "matter-js";
 import { useEffect, useRef } from "react";
 
@@ -26,12 +27,23 @@ function RotateCanvas() {
     const cw = 1000;
     const ch = 1000;
 
+    const gravityPower = 0.5;
+    let gravityDeg = 0;
+
     let engine, render, runner, mouse, mouseConstraint;
 
     initScreen();
     initMouse();
     initGround();
     initImageBoxes();
+
+    Events.on(runner, "tick", () => {
+      gravityDeg += 1;
+      engine.world.gravity.x =
+        gravityPower * Math.cos((Math.PI / 180) * gravityDeg);
+      engine.world.gravity.y =
+        gravityPower * Math.sin((Math.PI / 180) * gravityDeg);
+    });
 
     function initScreen() {
       engine = Engine.create();
