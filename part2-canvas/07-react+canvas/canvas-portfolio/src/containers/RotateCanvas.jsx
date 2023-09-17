@@ -79,13 +79,39 @@ function RotateCanvas() {
     }
 
     function initImageBoxes() {
-      addRect(cw / 2, ch / 2, 250 * 0.7, 250 * 0.7, {
-        chamfer: { radius: 20 },
-        render: { sprite: { texture: IconJS, xScale: 0.7, yScale: 0.7 } },
-      });
+      const scale = 0.7;
+      const t1 = { w: 250 * scale, h: 250 * scale };
+      const t2 = { w: 732 * scale, h: 144 * scale };
 
-      addRect(cw / 2, ch / 2, 250 * 0.7, 250 * 0.7, {
+      addRect(cw / 2, ch / 2, t1.w, t1.h, {
         chamfer: { radius: 20 },
+        render: { sprite: { texture: IconJS, xScale: scale, yScale: scale } },
+      });
+      addRect(cw / 2 - t1.w, ch / 2, t1.w, t1.h, {
+        chamfer: { radius: 20 },
+        render: { sprite: { texture: IconCSS, xScale: scale, yScale: scale } },
+      });
+      addRect(cw / 2 + t1.w, ch / 2, t1.w, t1.h, {
+        chamfer: { radius: 20 },
+        render: { sprite: { texture: IconHTML, xScale: scale, yScale: scale } },
+      });
+      addRect(cw / 2, ch / 2 + t1.h, t1.w, t1.h, {
+        chamfer: { radius: 20 },
+        render: {
+          sprite: { texture: IconTHREE, xScale: scale, yScale: scale },
+        },
+      });
+      addRect(cw / 2 - t1.w, ch / 2 + t1.h, t1.w, t1.h, {
+        chamfer: { radius: 75 },
+        render: {
+          sprite: { texture: IconREACT, xScale: scale, yScale: scale },
+        },
+      });
+      addRect(cw / 2, ch / 2 - t2.h, t2.w, t2.h, {
+        chamfer: { radius: 20 },
+        render: {
+          sprite: { texture: IconAFRAME, xScale: scale, yScale: scale },
+        },
       });
     }
 
