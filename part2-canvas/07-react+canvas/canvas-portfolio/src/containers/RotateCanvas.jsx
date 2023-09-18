@@ -67,6 +67,8 @@ function RotateCanvas() {
 
     let engine, render, runner, mouse, mouseConstraint;
 
+    let observer;
+
     initScreen();
     initMouse();
     initGround();
@@ -120,7 +122,7 @@ function RotateCanvas() {
         threshold: 0.1,
       };
 
-      const observer = new IntersectionObserver((entries) => {
+      observer = new IntersectionObserver((entries) => {
         const canvasEntry = entries[0];
         if (canvasEntry.isIntersecting) {
           // 디버깅용 console.log
@@ -202,6 +204,16 @@ function RotateCanvas() {
       const rect = Bodies.rectangle(x, y, w, h, options);
       Composite.add(engine.world, rect);
     }
+
+    return () => {
+      observer.unobserve(canvas);
+
+      Composite.clear(engine.world);
+      Mouse.clearSourceEvents(mouse);
+      Runner.stop(runner);
+      Render.stop(render);
+      Engine.clear(engine);
+    };
   }, []);
 
   return (
