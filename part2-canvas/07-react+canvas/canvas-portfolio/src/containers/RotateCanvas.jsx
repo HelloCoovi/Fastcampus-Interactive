@@ -71,6 +71,7 @@ function RotateCanvas() {
     initMouse();
     initGround();
     initImageBoxes();
+    initIntersectionObserver();
 
     Events.on(mouseConstraint, "mousedown", () => {
       const newSelected =
@@ -112,6 +113,28 @@ function RotateCanvas() {
       });
 
       Composite.add(engine.world, mouseConstraint);
+    }
+
+    function initIntersectionObserver() {
+      const options = {
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        const canvasEntry = entries[0];
+        if (canvasEntry.isIntersecting) {
+          // 디버깅용 console.log
+          // console.log("Canvas is visible. Starting render");
+          runner.enable = true;
+          Render.run(render);
+        } else {
+          // console.log("Canvas is hidden. Stopping render");
+          runner.enable = false;
+          Render.stop(render);
+        }
+      }, options);
+
+      observer.observe(canvas);
     }
 
     function initGround() {
