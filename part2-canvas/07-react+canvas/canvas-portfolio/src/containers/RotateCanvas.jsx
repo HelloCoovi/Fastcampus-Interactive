@@ -73,12 +73,8 @@ function RotateCanvas() {
     initImageBoxes();
 
     Events.on(mouseConstraint, "mousedown", () => {
-      console.log(mouseConstraint.body);
-
       const newSelected =
         mouseConstraint.body && data[mouseConstraint.body.label];
-
-      console.log(newSelected);
 
       newSelected && setSelected(newSelected);
     });
