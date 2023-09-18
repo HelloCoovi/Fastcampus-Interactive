@@ -72,6 +72,17 @@ function RotateCanvas() {
     initGround();
     initImageBoxes();
 
+    Events.on(mouseConstraint, "mousedown", () => {
+      console.log(mouseConstraint.body);
+
+      const newSelected =
+        mouseConstraint.body && data[mouseConstraint.body.label];
+
+      console.log(newSelected);
+
+      newSelected && setSelected(newSelected);
+    });
+
     Events.on(runner, "tick", () => {
       gravityDeg += 1;
       engine.world.gravity.x =
@@ -131,30 +142,36 @@ function RotateCanvas() {
       const t2 = { w: 732 * scale, h: 144 * scale };
 
       addRect(cw / 2, ch / 2, t1.w, t1.h, {
+        label: "JS",
         chamfer: { radius: 20 },
         render: { sprite: { texture: IconJS, xScale: scale, yScale: scale } },
       });
       addRect(cw / 2 - t1.w, ch / 2, t1.w, t1.h, {
+        label: "CSS",
         chamfer: { radius: 20 },
         render: { sprite: { texture: IconCSS, xScale: scale, yScale: scale } },
       });
       addRect(cw / 2 + t1.w, ch / 2, t1.w, t1.h, {
+        label: "HTML",
         chamfer: { radius: 20 },
         render: { sprite: { texture: IconHTML, xScale: scale, yScale: scale } },
       });
       addRect(cw / 2, ch / 2 + t1.h, t1.w, t1.h, {
+        label: "THREE",
         chamfer: { radius: 20 },
         render: {
           sprite: { texture: IconTHREE, xScale: scale, yScale: scale },
         },
       });
       addRect(cw / 2 - t1.w, ch / 2 + t1.h, t1.w, t1.h, {
+        label: "REACT",
         chamfer: { radius: 75 },
         render: {
           sprite: { texture: IconREACT, xScale: scale, yScale: scale },
         },
       });
       addRect(cw / 2, ch / 2 - t2.h, t2.w, t2.h, {
+        label: "AFRAME",
         chamfer: { radius: 20 },
         render: {
           sprite: { texture: IconAFRAME, xScale: scale, yScale: scale },
