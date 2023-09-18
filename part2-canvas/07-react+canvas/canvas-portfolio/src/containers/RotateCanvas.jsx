@@ -115,6 +115,9 @@ function RotateCanvas() {
       });
 
       Composite.add(engine.world, mouseConstraint);
+
+      canvas.removeEventListener("mousewheel", mouse.mousewheel);
+      canvas.removeEventListener("DOMMouseScroll", mouse.mousewheel);
     }
 
     function initIntersectionObserver() {
