@@ -24,7 +24,7 @@ function init() {
   )
 
   const geometry = new THREE.BoxGeometry(2, 2, 2) // 높이, 너비, 깊이
-  const material = new THREE.MeshBasicMaterial({ color: 0xcc99ff })
+  const material = new THREE.MeshStandardMaterial({ color: 0xcc99ff })
 
   const cube = new THREE.Mesh(geometry, material)
 
@@ -34,6 +34,14 @@ function init() {
   camera.position.set(3, 4, 5) // 카메라 좌표 설정 x, y, z
 
   camera.lookAt(cube.position)
+
+  const directionalLight = new THREE.DirectionalLight(0xf0f0f0, 1)
+  directionalLight.position.set(-1, 2, 3)
+  scene.add(directionalLight)
+
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.1)
+  ambientLight.position.set(3, 2, 1)
+  scene.add(ambientLight)
 
   renderer.render(scene, camera)
 }
