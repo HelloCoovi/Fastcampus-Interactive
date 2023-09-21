@@ -24,7 +24,16 @@ function init() {
   )
 
   const geometry = new THREE.BoxGeometry(2, 2, 2) // 높이, 너비, 깊이
-  const material = new THREE.MeshStandardMaterial({ color: 0xcc99ff })
+  const material = new THREE.MeshStandardMaterial({
+    // color: 0xcc99ff
+    color: new THREE.Color(0xcc99ff),
+    transparent: true,
+    opacity: 0.5,
+    // visible: false,
+    // wireframe: true,
+    side: THREE.DoubleSide,
+  })
+  material.color = new THREE.Color(0x00cb96)
 
   const cube = new THREE.Mesh(geometry, material)
 
