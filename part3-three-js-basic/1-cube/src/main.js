@@ -52,12 +52,18 @@ function init() {
   ambientLight.position.set(3, 2, 1)
   scene.add(ambientLight)
 
+  const clock = new THREE.Clock()
+
   render()
 
   function render() {
-    cube.rotation.x += THREE.MathUtils.degToRad(1)
+    // cube.rotation.x += THREE.MathUtils.degToRad(1)
     // cube.rotation.y = Math.sin(cube.rotation.x)
     // cube.scale.x = Math.cos(cube.rotation.x)
+
+    // cube.rotation.x = Date.now() / 1000
+    // cube.rotation.x = clock.getElapsedTime() // clock 객체가 생성된 후 경과한 시간
+    cube.rotation.x += clock.getDelta() // clock 객체 호출 사이 간격
 
     renderer.render(scene, camera)
 
