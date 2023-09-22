@@ -27,11 +27,11 @@ function init() {
   const material = new THREE.MeshStandardMaterial({
     // color: 0xcc99ff
     color: new THREE.Color(0xcc99ff),
-    transparent: true,
-    opacity: 0.5,
+    // transparent: true,
+    // opacity: 0.5,
     // visible: false,
     // wireframe: true,
-    side: THREE.DoubleSide,
+    // side: THREE.DoubleSide,
   })
   material.color = new THREE.Color(0x00cb96)
 
@@ -53,4 +53,15 @@ function init() {
   scene.add(ambientLight)
 
   renderer.render(scene, camera)
+
+  function handleResize() {
+    camera.aspect = window.innerWidth / window.innerHeight
+    camera.updateProjectionMatrix()
+
+    renderer.setSize(window.innerWidth, window.innerHeight)
+
+    renderer.render(scene, camera)
+  }
+
+  window.addEventListener("resize", handleResize)
 }
