@@ -23,16 +23,24 @@ function init() {
     500  // 최대 시야 거리
   )
 
-  const geometry = new THREE.IcosahedronGeometry(1)
-  const material = new THREE.MeshLambertMaterial({
+  const cubeGeometry = new THREE.IcosahedronGeometry(1)
+  const cubeMaterial = new THREE.MeshLambertMaterial({
     color: 0x00ffff,
     emissive: 0x111111,
   })
   // material.color = new THREE.Color(0x00cb96)
+  const cube = new THREE.Mesh(cubeGeometry, cubeMaterial)
 
-  const cube = new THREE.Mesh(geometry, material)
+  const skeletonGeometry = new THREE.IcosahedronGeometry(2)
+  const skeletonMaterial = new THREE.MeshBasicMaterial({
+    wireframe: true,
+    transparent: true,
+    opacity: 0.2,
+    color: 0xaaaaaa,
+  })
+  const skeleton = new THREE.Mesh(skeletonGeometry, skeletonMaterial)
 
-  scene.add(cube)
+  scene.add(cube, skeleton)
 
   camera.position.z = 5
   // camera.position.set(3, 4, 5) // 카메라 좌표 설정 x, y, z
@@ -51,6 +59,9 @@ function init() {
 
     cube.rotation.x = elapsedTime
     cube.rotation.y = elapsedTime
+
+    skeleton.rotation.x = elapsedTime * 1.5
+    skeleton.rotation.y = elapsedTime * 1.5
 
     renderer.render(scene, camera)
 
