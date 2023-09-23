@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 window.addEventListener("load", function () {
   init()
@@ -22,6 +23,23 @@ function init() {
     1, // 최소 시야 거리
     500  // 최대 시야 거리
   )
+
+  const controls = new OrbitControls(camera, renderer.domElement)
+  controls.autoRotate = true  // 자동으로 카메라 회전
+  // controls.autoRotateSpeed = 10  // autoRotate 속도 조절
+  controls.enableDamping = true // 카메라 드래그 관성 조절하기
+  // controls.dampingFactor = 0.01 // 관성정도 조정하기
+  // controls.enableZoom = true  // 마우스 휠로 확대
+  // controls.enablePan = true  // 마우스 우클릭으로 카메라 좌우 이동
+  controls.minDistance = 10  // 최소 확대
+  controls.maxDistance = 50  // 최대 확대
+  controls.minPolarAngle = Math.PI / 4  // 최소 수직 카메라 각도
+  controls.maxPolarAngle = Math.PI / 2  // 최대 수직 카메라 각도
+  controls.minAzimuthAngle = Math.PI / 4  // 최소 수평 카메라 각도
+  controls.maxAzimuthAngle = Math.PI / 2  // 최대 수평 카메라 각도
+
+  const axesHelper = new THREE.AxesHelper(5)
+  scene.add(axesHelper)
 
   const cubeGeometry = new THREE.IcosahedronGeometry(1)
   const cubeMaterial = new THREE.MeshLambertMaterial({
@@ -57,13 +75,15 @@ function init() {
   function render() {
     const elapsedTime = clock.getElapsedTime()
 
-    cube.rotation.x = elapsedTime
-    cube.rotation.y = elapsedTime
+    // cube.rotation.x = elapsedTime
+    // cube.rotation.y = elapsedTime
 
-    skeleton.rotation.x = elapsedTime * 1.5
-    skeleton.rotation.y = elapsedTime * 1.5
+    // skeleton.rotation.x = elapsedTime * 1.5
+    // skeleton.rotation.y = elapsedTime * 1.5
 
     renderer.render(scene, camera)
+
+    controls.update()
 
     requestAnimationFrame(render)
   }
@@ -75,6 +95,8 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight)
 
     renderer.render(scene, camera)
+
+    controls.update()
   }
 
   window.addEventListener("resize", handleResize)
