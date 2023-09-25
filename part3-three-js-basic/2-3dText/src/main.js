@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
 // import typeface from './asset/fonts/The Jamsil 3 Regular_Regular.json'
-// import GUI from 'lil-gui'
+import GUI from 'lil-gui'
 
 
 
@@ -13,6 +13,7 @@ window.addEventListener("load", function () {
 })
 
 function init() {
+  const gui = new GUI()
   // const guiOptions = {
   //   color: 0x00ffff
   // }
@@ -49,7 +50,7 @@ function init() {
         size: 0.5,
         height: 0.1,
       })
-      const textMaterial = new THREE.MeshPhongMaterial({ color: 0x08c896 })
+      const textMaterial = new THREE.MeshPhongMaterial({ color: 0x00c896 })
 
       const text = new THREE.Mesh(textGeometry, textMaterial)
       scene.add(text)
@@ -59,8 +60,23 @@ function init() {
   )
   // const font = fontLoader.parse(typeface)
 
+
+
+  /** AmbientLight */
   const ambientLight = new THREE.AmbientLight(0xffffff, 1)
   scene.add(ambientLight)
+
+  /** PointLight */
+  const pointLight = new THREE.PointLight(0xffffff, 30)
+  pointLight.position.set(3, 0, 2)
+  scene.add(pointLight)
+
+  const pointerLightHelper = new THREE.PointLightHelper(pointLight, 0.5)
+  scene.add(pointerLightHelper)
+
+  /** lil-GUI */
+  // pointerLight
+  gui.add(pointLight.position, "x").min(-3).max(3).step(0.1)
 
   render()
 
@@ -80,6 +96,4 @@ function init() {
   }
 
   window.addEventListener("resize", handleResize)
-
-  // const gui = new GUI()
 }
