@@ -1,5 +1,9 @@
 import * as THREE from 'three'
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
+// import typeface from './asset/fonts/The Jamsil 3 Regular_Regular.json'
 // import GUI from 'lil-gui'
+
+
 
 window.addEventListener("load", function () {
   init()
@@ -28,6 +32,16 @@ function init() {
   )
 
   camera.position.z = 5
+
+  const fontLoader = new FontLoader()
+  fontLoader.load(
+    "./asset/fonts/The Jamsil 3 Regular_Regular.json",
+    font => console.log("load", font),
+    event => console.log("progress", event),
+    error => console.log("error", error),
+  )
+  // const font = fontLoader.parse(typeface)
+
 
   render()
 
