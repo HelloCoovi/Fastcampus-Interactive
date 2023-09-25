@@ -1,5 +1,8 @@
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
+import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
 // import typeface from './asset/fonts/The Jamsil 3 Regular_Regular.json'
 // import GUI from 'lil-gui'
 
@@ -33,15 +36,31 @@ function init() {
 
   camera.position.z = 5
 
+  /** Controls */
+  new OrbitControls(camera, renderer.domElement)
+
+  /** font */
   const fontLoader = new FontLoader()
   fontLoader.load(
     "./asset/fonts/The Jamsil 3 Regular_Regular.json",
-    font => console.log("load", font),
-    event => console.log("progress", event),
-    error => console.log("error", error),
+    font => {
+      const textGeometry = new TextGeometry("안녕 친구들!", {
+        font: font,
+        size: 0.5,
+        height: 0.1,
+      })
+      const textMaterial = new THREE.MeshPhongMaterial({ color: 0x08c896 })
+
+      const text = new THREE.Mesh(textGeometry, textMaterial)
+      scene.add(text)
+    }
+    // event => console.log("progress", event),
+    // error => console.log("error", error),
   )
   // const font = fontLoader.parse(typeface)
 
+  const ambientLight = new THREE.AmbientLight(0xffffff, 1)
+  scene.add(ambientLight)
 
   render()
 
