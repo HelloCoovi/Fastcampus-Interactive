@@ -49,6 +49,11 @@ async function init() {
     font: font,
     size: 0.5,
     height: 0.1,
+
+    bevelEnabled: true,    // bevel 효과 활성화, true일 경우 bevel 효과 적용
+    bevelSegments: 5,      // bevel의 세그먼트(구분) 수. 값이 클수록 베벨의 모양이 더 부드러워짐
+    bevelSize: 0.02,       // bevel의 크기. 값이 클수록 베벨의 너비가 넓어짐
+    bevelThickness: 0.02,  // bevel의 두께. 값이 클수록 베벨이 더 굵어짐
   })
   textGeometry.center()
   const textMaterial = new THREE.MeshPhongMaterial({ color: 0x00c896 })
