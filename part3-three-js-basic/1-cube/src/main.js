@@ -1,11 +1,16 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import GUI from 'lil-gui'
 
 window.addEventListener("load", function () {
   init()
 })
 
 function init() {
+  const guiOptions = {
+    color: 0x00ffff
+  }
+
   const renderer = new THREE.WebGLRenderer({
     // alpha: true,  // 검정 배경 지우기(투명한 배경)
     antialias: true  // 렌더링시 계단 현상 해결(안티 앨리어싱)
@@ -100,4 +105,19 @@ function init() {
   }
 
   window.addEventListener("resize", handleResize)
+
+  const gui = new GUI()
+
+  // gui.add(cube.position, "y", -3, 3, 0.1) // 아래 add문과 동일하며 줄여서 작성 가능하다.
+  gui.add(cube.position, "y")
+    .min(-3)
+    .max(3)
+    .step(0.1)
+
+  gui.add(cube, "visible")
+
+  gui.addColor(guiOptions, "color")
+    .onChange((value) => {
+      cube.material.color.set(value)
+    })
 }
