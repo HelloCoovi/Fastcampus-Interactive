@@ -50,9 +50,17 @@ async function init() {
     size: 0.5,
     height: 0.1,
   })
+  textGeometry.center()
   const textMaterial = new THREE.MeshPhongMaterial({ color: 0x00c896 })
 
   const text = new THREE.Mesh(textGeometry, textMaterial)
+  // textGeometry.computeBoundingBox();
+  // console.log("textGeometry.boundingBox: ", textGeometry.boundingBox)
+  // textGeometry.translate(
+  //   -(textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x) * 0.5,
+  //   -(textGeometry.boundingBox.max.y - textGeometry.boundingBox.min.y) * 0.5,
+  //   -(textGeometry.boundingBox.max.z - textGeometry.boundingBox.min.z) * 0.5,
+  // )
   scene.add(text)
 
   /** AmbientLight */
